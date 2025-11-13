@@ -103,7 +103,7 @@ export default function Contact({
                                     Social media:
                                     <div className="mt-2">
                                         <a href="https://www.instagram.com/love_balloons_bedfordshire_/?hl=en" target="_blank" rel="noopener noreferrer">
-                                            <img src="/img/social/Instagram_Glyph_Black.png" className="w-8 h-8 inline-block mt-4" alt="Instagram" />
+                                            <img src="/storage/img/social/Instagram_Glyph_Black.png" className="w-8 h-8 inline-block mt-4" alt="Instagram" />
                                         </a>
                                     </div>
                                 </li>

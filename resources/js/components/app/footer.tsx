@@ -4,7 +4,7 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-3 gap-4">
                     <div>
-                        <img src="/img/logo/funtime-softplay-logo-trans.png" className="w-44" alt="Funtime Softplay Logo" />
+                        <img src="/storageimg/logo/funtime-softplay-logo-trans.png" className="w-44" alt="Funtime Softplay Logo" />
                     </div>
                     <div>
                         <h2 className="text-slate-100 text-lg font-semibold">Contact information</h2>
@@ -16,7 +16,7 @@ const Footer = () => {
                     <div>
                         <h2 className="text-slate-100 text-lg font-semibold">Social Media</h2>
                         <a href="https://www.instagram.com/love_balloons_bedfordshire_/?hl=en" target="_blank" rel="noopener noreferrer">
-                            <img src="/img/social/Instagram_Glyph_White.png" className="w-8 h-8 inline-block mt-4" alt="Instagram" />
+                            <img src="/storage/img/social/Instagram_Glyph_White.png" className="w-8 h-8 inline-block mt-4" alt="Instagram" />
                         </a>
                     </div>
                 </div>
