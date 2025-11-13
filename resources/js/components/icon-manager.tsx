@@ -21,18 +21,18 @@ interface IconManagerProps {
 }
 
 const availableIcons = [
-    { value: '/img/icons/rocker.png', label: 'Rocker' },
-    { value: '/img/icons/castle.png', label: 'Castle' },
-    { value: '/img/icons/pyramid.png', label: 'Pyramid' },
-    { value: '/img/icons/ballpit.png', label: 'Ball Pit' },
-    { value: '/img/icons/doublerocker.png', label: 'Double Rocker' },
-    { value: '/img/icons/maxistep.png', label: 'Maxi Step' },
-    { value: '/img/icons/slide.png', label: 'Slide' },
-    { value: '/img/icons/rideonanimal.png', label: 'Animal Hopper' },
-    { value: '/img/icons/bridge.png', label: 'Bridge' },
-    { value: '/img/icons/rideoncars.png', label: 'Ride On Car' },
-    { value: '/img/icons/picketfence.png', label: 'Picket Fence' },
-    { value: '/img/icons/blocks.png', label: 'Blocks' },
+    { value: '/storage/img/icons/rocker.png', label: 'Rocker' },
+    { value: '/storage/img/icons/castle.png', label: 'Castle' },
+    { value: '/storage/img/icons/pyramid.png', label: 'Pyramid' },
+    { value: '/storage/img/icons/ballpit.png', label: 'Ball Pit' },
+    { value: '/storage/img/icons/doublerocker.png', label: 'Double Rocker' },
+    { value: '/storage/img/icons/maxistep.png', label: 'Maxi Step' },
+    { value: '/storage/img/icons/slide.png', label: 'Slide' },
+    { value: '/storage/img/icons/rideonanimal.png', label: 'Animal Hopper' },
+    { value: '/storage/img/icons/bridge.png', label: 'Bridge' },
+    { value: '/storage/img/icons/rideoncars.png', label: 'Ride On Car' },
+    { value: '/storage/img/icons/picketfence.png', label: 'Picket Fence' },
+    { value: '/storage/img/icons/blocks.png', label: 'Blocks' },
 ];
 
 export default function IconManager({
