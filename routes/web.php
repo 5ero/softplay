@@ -17,7 +17,6 @@ Route::get('/', function () {
         : collect();
 
     return Inertia::render('welcome', [
-        'canRegister' => Features::enabled(Features::registration()),
         'sets' => $sets,
     ]);
 })->name('home');
