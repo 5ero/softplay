@@ -93,11 +93,11 @@ export default function Gallery({ items, categories, filters }: Props) {
                     rel="stylesheet"
                 />
             </Head>
-            <div className="flex min-h-screen flex-col">
+            <div className="flex min-h-screen flex-col bg-amber-50">
                 <Header />
                 <div className="container mx-auto px-4 py-12 mt-20 md:mt-28">
                     <div className="mb-8">
-                        <h1 className="text-4xl font-bold text-gray-900">Our Gallery</h1>
+                        <h1 className="text-5xl font-bold text-orange-600">Our Gallery</h1>
                         <p className="mt-2 text-lg text-gray-600">
                             Browse our collection of soft play equipment and party rentals
                         </p>

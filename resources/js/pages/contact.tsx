@@ -6,12 +6,8 @@ import { type SharedData } from '@/types';
 import { Head, usePage, Form } from '@inertiajs/react';
 import { store as contactStore } from '@/routes/contact';
 
-export default function Contact({
-    canRegister = true,
-}: {
-    canRegister?: boolean;
-}) {
-    const { auth, flash } = usePage<SharedData & { flash?: { success?: string } }>().props;
+export default function Contact() {
+    const { flash } = usePage<SharedData & { flash?: { success?: string } }>().props;
 
     return (
         <>
@@ -22,10 +18,10 @@ export default function Contact({
                     rel="stylesheet"
                 />
             </Head>
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen  bg-amber-50">
                 <Header />
                 <HeroContact />
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto bg-white">
                     <div className="flex flex-col md:flex-row mt-12">
                         <div className="w-full md:w-2/3">
                             <h1 className="text-slate-600 text-4xl m-8">

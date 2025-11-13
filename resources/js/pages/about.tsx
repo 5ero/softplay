@@ -1,17 +1,10 @@
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
-import Hero from '@/components/app/hero';
 import HeroAbout from '@/components/app/heroAbout';
-import Sets from '@/components/app/sets';
-import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 
-export default function Welcome({
-    canRegister = true,
-}: {
-    canRegister?: boolean;
-}) {
+export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
 
     return (
