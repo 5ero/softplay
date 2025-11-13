@@ -4,7 +4,7 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-3 gap-4">
                     <div>
-                        <img src="/storageimg/logo/funtime-softplay-logo-trans.png" className="w-44" alt="Funtime Softplay Logo" />
+                        <img src="/storage/img/logo/funtime-softplay-logo-trans.png" className="w-44" alt="Funtime Softplay Logo" />
                     </div>
                     <div>
                         <h2 className="text-slate-100 text-lg font-semibold">Contact information</h2>
