@@ -27,11 +27,11 @@ const Header = () => {
                         />
                     ) : (
                         <>
-                            <NavItem
+                            {/* <NavItem
                                 title='Login'
                                 href={login()}
                                 method="get"
-                            />
+                            /> */}
                         </>
                     )}
                 </div>
