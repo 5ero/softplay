@@ -17,10 +17,46 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
             <SidebarMenu>
                 {items.map((item) => {
                     const itemUrl = resolveUrl(item.href);
-                    // Don't highlight "View Website" (/) when on dashboard pages
-                    const isActive = itemUrl === '/' 
-                        ? page.url === '/'
-                        : page.url.startsWith(itemUrl);
+                    // Special case: only highlight "/" when exactly on homepage
+                    if (itemUrl === '/') {
+                        const isActive = page.url === '/';
+                        return (
+                            <SidebarMenuItem key={item.title}>
+                                <SidebarMenuButton
+                                    asChild
+                                    isActive={isActive}
+                                    tooltip={{ children: item.title }}
+                                >
+                                    <Link href={item.href} prefetch>
+                                        {item.icon && <item.icon />}
+                                        <span>{item.title}</span>
+                                    </Link>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                        );
+                    }
+                    
+                    // For /dashboard, only match exact URL or with query params
+                    if (itemUrl === '/dashboard') {
+                        const isActive = page.url === '/dashboard' || page.url.startsWith('/dashboard?');
+                        return (
+                            <SidebarMenuItem key={item.title}>
+                                <SidebarMenuButton
+                                    asChild
+                                    isActive={isActive}
+                                    tooltip={{ children: item.title }}
+                                >
+                                    <Link href={item.href} prefetch>
+                                        {item.icon && <item.icon />}
+                                        <span>{item.title}</span>
+                                    </Link>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                        );
+                    }
+                    
+                    // For other routes, use startsWith
+                    const isActive = page.url.startsWith(itemUrl);
                     
                     return (
                         <SidebarMenuItem key={item.title}>
