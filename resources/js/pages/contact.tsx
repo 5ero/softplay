@@ -23,7 +23,7 @@ export default function Contact() {
                 <HeroContact />
                 <div className="max-w-7xl mx-auto bg-white">
                     <div className="flex flex-col md:flex-row mt-12">
-                        <div className="w-full md:w-2/3">
+                        <div className="w-full">
                             <h1 className="text-slate-600 text-4xl m-8">
                                 Contact us
                             </h1>

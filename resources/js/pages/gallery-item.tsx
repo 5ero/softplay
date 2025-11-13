@@ -47,7 +47,7 @@ export default function GalleryItemView({ item }: Props) {
                     rel="stylesheet"
                 />
             </Head>
-            <div className="flex min-h-screen flex-col">
+            <div className="flex min-h-screen flex-col bg-amber-50">
                 <Header />
                 <div className="container mx-auto px-4 py-12 mt-20 md:mt-28">
                     {/* Back Button */}
