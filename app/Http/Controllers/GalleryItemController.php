@@ -158,7 +158,16 @@ class GalleryItemController extends Controller
         $item = GalleryItem::findOrFail($id);
         $data = $request->validated();
 
-        $images = $item->images ?: [];
+        // Handle existing images
+        $images = [];
+        if ($request->has('existing_images')) {
+            $existingImages = json_decode($request->input('existing_images'), true);
+            if (is_array($existingImages)) {
+                $images = $existingImages;
+            }
+        }
+
+        // Add new images
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
                 $images[] = Storage::disk('public')->putFile('gallery', $file);

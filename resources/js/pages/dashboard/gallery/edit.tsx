@@ -70,6 +70,28 @@ export default function EditGalleryItem({
     const [icons, setIcons] = React.useState<
         { src: string; label: string }[]
     >(item.icons || []);
+    const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
+    const [existingImages, setExistingImages] = React.useState<string[]>(
+        item.images || []
+    );
+    const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setSelectedFiles(Array.from(e.target.files));
+        }
+    };
+
+    const removeNewFile = (index: number) => {
+        setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
+    };
+
+    const removeExistingImage = (index: number) => {
+        setExistingImages((prev) => prev.filter((_, i) => i !== index));
+    };
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -194,40 +216,92 @@ export default function EditGalleryItem({
                                         <InputError message={errors.price} />
                                     </div>
 
-                                    {item.images && item.images.length > 0 && (
+                                    {existingImages.length > 0 && (
                                         <div className="grid gap-2">
                                             <Label>Current Images</Label>
                                             <div className="grid grid-cols-3 gap-2">
-                                                {item.images.map(
+                                                {existingImages.map(
                                                     (image, index) => (
-                                                        <img
+                                                        <div
                                                             key={index}
-                                                            src={`/storage/${image}`}
-                                                            alt={`${item.title} ${index + 1}`}
-                                                            className="aspect-square rounded-md border object-cover"
-                                                        />
+                                                            className="relative aspect-square overflow-hidden rounded-md border"
+                                                        >
+                                                            <img
+                                                                src={`/storage/${image}`}
+                                                                alt={`${item.title} ${index + 1}`}
+                                                                className="h-full w-full object-cover"
+                                                            />
+                                                            <Button
+                                                                type="button"
+                                                                variant="destructive"
+                                                                size="sm"
+                                                                className="absolute right-1 top-1 h-6 w-6 p-0"
+                                                                onClick={() =>
+                                                                    removeExistingImage(
+                                                                        index
+                                                                    )
+                                                                }
+                                                            >
+                                                                ×
+                                                            </Button>
+                                                        </div>
                                                     )
                                                 )}
                                             </div>
                                         </div>
                                     )}
 
+                                    <input
+                                        type="hidden"
+                                        name="existing_images"
+                                        value={JSON.stringify(existingImages)}
+                                    />
+
                                     <div className="grid gap-2">
                                         <Label htmlFor="images">
                                             Add More Images
                                         </Label>
                                         <Input
+                                            ref={fileInputRef}
                                             id="images"
                                             name="images[]"
                                             type="file"
                                             multiple
                                             accept="image/*"
+                                            onChange={handleFileChange}
                                         />
                                         <p className="text-xs text-muted-foreground">
                                             Upload additional images (max 5MB
                                             each)
                                         </p>
                                         <InputError message={errors.images} />
+
+                                        {/* Preview New Files */}
+                                        {selectedFiles.length > 0 && (
+                                            <div className="mt-4 grid grid-cols-3 gap-2">
+                                                {selectedFiles.map((file, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="relative aspect-square overflow-hidden rounded-md border"
+                                                    >
+                                                        <img
+                                                            src={URL.createObjectURL(file)}
+                                                            alt={file.name}
+                                                            className="h-full w-full object-cover"
+                                                        />
+                                                        <Button
+                                                            type="button"
+                                                            variant="destructive"
+                                                            size="sm"
+                                                            className="absolute right-1 top-1 h-6 w-6 p-0"
+                                                            onClick={() => removeNewFile(index)}
+                                                        >
+                                                            ×
+                                                        </Button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
 
                                     <IconManager

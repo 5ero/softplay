@@ -53,6 +53,21 @@ export default function CreateGalleryItem({
     const [icons, setIcons] = React.useState<{ src: string; label: string }[]>(
         []
     );
+    const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
+    const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setSelectedFiles(Array.from(e.target.files));
+        }
+    };
+
+    const removeFile = (index: number) => {
+        setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
+    };
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -173,17 +188,46 @@ export default function CreateGalleryItem({
                                     <div className="grid gap-2">
                                         <Label htmlFor="images">Images</Label>
                                         <Input
+                                            ref={fileInputRef}
                                             id="images"
                                             name="images[]"
                                             type="file"
                                             multiple
                                             accept="image/*"
+                                            onChange={handleFileChange}
                                         />
                                         <p className="text-xs text-muted-foreground">
                                             Upload multiple images (max 5MB
                                             each)
                                         </p>
                                         <InputError message={errors.images} />
+
+                                        {/* Preview Selected Files */}
+                                        {selectedFiles.length > 0 && (
+                                            <div className="mt-4 grid grid-cols-3 gap-2">
+                                                {selectedFiles.map((file, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="relative aspect-square overflow-hidden rounded-md border"
+                                                    >
+                                                        <img
+                                                            src={URL.createObjectURL(file)}
+                                                            alt={file.name}
+                                                            className="h-full w-full object-cover"
+                                                        />
+                                                        <Button
+                                                            type="button"
+                                                            variant="destructive"
+                                                            size="sm"
+                                                            className="absolute right-1 top-1 h-6 w-6 p-0"
+                                                            onClick={() => removeFile(index)}
+                                                        >
+                                                            ×
+                                                        </Button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
 
                                     <IconManager
