@@ -7,9 +7,17 @@ import {
     CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link, router } from '@inertiajs/react';
+import React from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -41,7 +49,28 @@ interface GalleryItem {
     updated_at: string;
 }
 
-export default function GalleryIndex({ items }: { items: GalleryItem[] }) {
+interface GalleryIndexProps {
+    items: GalleryItem[];
+    categories: Category[];
+    filters: {
+        category?: string;
+    };
+}
+
+export default function GalleryIndex({ items, categories, filters }: GalleryIndexProps) {
+    const [selectedCategory, setSelectedCategory] = React.useState<string>(
+        filters.category || 'all'
+    );
+
+    const handleCategoryChange = (value: string) => {
+        setSelectedCategory(value);
+        if (value === 'all') {
+            router.get('/dashboard/gallery');
+        } else {
+            router.get('/dashboard/gallery', { category: value });
+        }
+    };
+
     const handleDelete = (id: number) => {
         if (
             confirm(
@@ -67,6 +96,28 @@ export default function GalleryIndex({ items }: { items: GalleryItem[] }) {
                     <Link href="/dashboard/gallery/create">
                         <Button>Add Item</Button>
                     </Link>
+                </div>
+
+                <div className="flex items-center gap-4">
+                    <Select
+                        value={selectedCategory}
+                        onValueChange={handleCategoryChange}
+                    >
+                        <SelectTrigger className="w-[200px]">
+                            <SelectValue placeholder="All Categories" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">All Categories</SelectItem>
+                            {categories.map((category) => (
+                                <SelectItem
+                                    key={category.id}
+                                    value={category.id.toString()}
+                                >
+                                    {category.name}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

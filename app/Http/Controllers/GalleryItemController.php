@@ -77,12 +77,24 @@ class GalleryItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = GalleryItem::with('category')->orderBy('sort_order')->get();
+        $query = GalleryItem::with('category');
+
+        // Category filter
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->input('category'));
+        }
+
+        $items = $query->orderBy('sort_order')->get();
+        $categories = Category::orderBy('sort_order')->get();
 
         return Inertia::render('dashboard/gallery/index', [
             'items' => $items,
+            'categories' => $categories,
+            'filters' => [
+                'category' => $request->input('category'),
+            ],
         ]);
     }
 
