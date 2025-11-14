@@ -80,6 +80,7 @@ export default function Login({
                                 <Checkbox
                                     id="remember"
                                     name="remember"
+                                    value="1"
                                     tabIndex={3}
                                 />
                                 <Label htmlFor="remember">Remember me</Label>
