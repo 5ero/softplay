@@ -30,7 +30,7 @@ class StoreGalleryItemRequest extends FormRequest
             'images' => ['nullable', 'array'],
             'images.*' => ['file', 'image', 'max:5120'], // each image <= 5MB
             'videos' => ['nullable', 'array'],
-            'videos.*' => ['file', 'mimes:mp4,mov,avi,wmv', 'max:51200'], // each video <= 50MB
+            'videos.*' => ['file', 'mimes:mp4,mov,avi,wmv', 'max:102400'], // each video <= 100MB
             'icons' => ['nullable', 'string'], // JSON string from frontend
             'is_active' => ['sometimes', 'boolean'],
             'sort_order' => ['nullable', 'integer'],
