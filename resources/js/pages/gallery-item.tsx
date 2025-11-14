@@ -26,6 +26,7 @@ interface GalleryItem {
     coverage?: string;
     price: string;
     images: string[];
+    videos?: string[];
     icons?: IconData[];
     category: Category;
 }
@@ -134,6 +135,27 @@ export default function GalleryItemView({ item }: Props) {
                                     {item.description}
                                 </p>
                             </div>
+
+                            {/* Videos Section */}
+                            {item.videos && item.videos.length > 0 && (
+                                <div>
+                                    <h2 className="mb-4 text-xl font-semibold">Videos</h2>
+                                    <div className="space-y-4">
+                                        {item.videos.map((video, index) => (
+                                            <div key={index} className="overflow-hidden rounded-lg border">
+                                                <video
+                                                    controls
+                                                    className="w-full"
+                                                    preload="metadata"
+                                                >
+                                                    <source src={`/storage/${video}`} type="video/mp4" />
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
                             {/* Icons Section - Only for Soft Play Sets */}
                             {isSoftPlaySet && item.icons && item.icons.length > 0 && (

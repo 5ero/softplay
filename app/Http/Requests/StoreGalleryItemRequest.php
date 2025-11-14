@@ -29,6 +29,8 @@ class StoreGalleryItemRequest extends FormRequest
             'price' => ['required', 'numeric', 'min:0'],
             'images' => ['nullable', 'array'],
             'images.*' => ['file', 'image', 'max:5120'], // each image <= 5MB
+            'videos' => ['nullable', 'array'],
+            'videos.*' => ['file', 'mimes:mp4,mov,avi,wmv', 'max:51200'], // each video <= 50MB
             'icons' => ['nullable', 'string'], // JSON string from frontend
             'is_active' => ['sometimes', 'boolean'],
             'sort_order' => ['nullable', 'integer'],

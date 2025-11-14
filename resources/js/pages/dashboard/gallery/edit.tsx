@@ -52,6 +52,7 @@ interface GalleryItem {
     coverage?: string;
     price: string;
     images: string[];
+    videos?: string[];
     icons: { src: string; label: string }[];
     is_active: boolean;
     sort_order: number;
@@ -71,14 +72,25 @@ export default function EditGalleryItem({
         { src: string; label: string }[]
     >(item.icons || []);
     const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
+    const [selectedVideos, setSelectedVideos] = React.useState<File[]>([]);
     const [existingImages, setExistingImages] = React.useState<string[]>(
         item.images || []
     );
+    const [existingVideos, setExistingVideos] = React.useState<string[]>(
+        item.videos || []
+    );
     const fileInputRef = React.useRef<HTMLInputElement>(null);
+    const videoInputRef = React.useRef<HTMLInputElement>(null);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
             setSelectedFiles(Array.from(e.target.files));
+        }
+    };
+
+    const handleVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setSelectedVideos(Array.from(e.target.files));
         }
     };
 
@@ -89,8 +101,19 @@ export default function EditGalleryItem({
         }
     };
 
+    const removeNewVideo = (index: number) => {
+        setSelectedVideos((prev) => prev.filter((_, i) => i !== index));
+        if (videoInputRef.current) {
+            videoInputRef.current.value = '';
+        }
+    };
+
     const removeExistingImage = (index: number) => {
         setExistingImages((prev) => prev.filter((_, i) => i !== index));
+    };
+
+    const removeExistingVideo = (index: number) => {
+        setExistingVideos((prev) => prev.filter((_, i) => i !== index));
     };
 
     return (
@@ -297,6 +320,114 @@ export default function EditGalleryItem({
                                                             onClick={() => removeNewFile(index)}
                                                         >
                                                             ×
+                                                        </Button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {existingVideos.length > 0 && (
+                                        <div className="grid gap-2">
+                                            <Label>Current Videos</Label>
+                                            <div className="space-y-2">
+                                                {existingVideos.map((video, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="flex items-center justify-between rounded-md border p-3"
+                                                    >
+                                                        <div className="flex items-center gap-2">
+                                                            <svg
+                                                                className="h-8 w-8 text-muted-foreground"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    strokeWidth={2}
+                                                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                                                />
+                                                            </svg>
+                                                            <p className="text-sm font-medium">
+                                                                {video.split('/').pop()}
+                                                            </p>
+                                                        </div>
+                                                        <Button
+                                                            type="button"
+                                                            variant="destructive"
+                                                            size="sm"
+                                                            onClick={() => removeExistingVideo(index)}
+                                                        >
+                                                            Remove
+                                                        </Button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <input
+                                        type="hidden"
+                                        name="existing_videos"
+                                        value={JSON.stringify(existingVideos)}
+                                    />
+
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="videos">
+                                            Add More Videos
+                                        </Label>
+                                        <Input
+                                            ref={videoInputRef}
+                                            id="videos"
+                                            name="videos[]"
+                                            type="file"
+                                            multiple
+                                            accept="video/mp4,video/quicktime,video/x-msvideo,video/x-ms-wmv"
+                                            onChange={handleVideoChange}
+                                        />
+                                        <p className="text-xs text-muted-foreground">
+                                            Upload additional videos (max 50MB each, formats: MP4, MOV, AVI, WMV)
+                                        </p>
+                                        <InputError message={errors.videos} />
+
+                                        {/* Preview New Videos */}
+                                        {selectedVideos.length > 0 && (
+                                            <div className="mt-4 space-y-2">
+                                                {selectedVideos.map((file, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="flex items-center justify-between rounded-md border p-3"
+                                                    >
+                                                        <div className="flex items-center gap-2">
+                                                            <svg
+                                                                className="h-8 w-8 text-muted-foreground"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    strokeWidth={2}
+                                                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                                                />
+                                                            </svg>
+                                                            <div>
+                                                                <p className="text-sm font-medium">{file.name}</p>
+                                                                <p className="text-xs text-muted-foreground">
+                                                                    {(file.size / 1024 / 1024).toFixed(2)} MB
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <Button
+                                                            type="button"
+                                                            variant="destructive"
+                                                            size="sm"
+                                                            onClick={() => removeNewVideo(index)}
+                                                        >
+                                                            Remove
                                                         </Button>
                                                     </div>
                                                 ))}

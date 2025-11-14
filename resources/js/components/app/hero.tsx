@@ -1,4 +1,4 @@
-import Button from '@/components/app/form/button';
+import { Link } from '@inertiajs/react';
 
 const Hero = () => {
     return (
@@ -17,7 +17,12 @@ const Hero = () => {
                         </div>
 
                         <div className="order-last">
-                            <Button label="View Gallery" />
+                            <Link
+                                href="/gallery"
+                                className="inline-block cursor-pointer bg-orange-600 hover:bg-orange-500 text-white rounded-lg p-4 mt-6 md:mt-4"
+                            >
+                                View Gallery
+                            </Link>
                         </div>
                     </div>
                     <div 

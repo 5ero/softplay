@@ -111,8 +111,15 @@ class GalleryItemController extends Controller
                 $images[] = Storage::disk('public')->putFile('gallery', $file);
             }
         }
-
         $data['images'] = $images;
+
+        $videos = [];
+        if ($request->hasFile('videos')) {
+            foreach ($request->file('videos') as $file) {
+                $videos[] = Storage::disk('public')->putFile('gallery/videos', $file);
+            }
+        }
+        $data['videos'] = $videos;
 
         // decode icons from JSON string if present
         if (isset($data['icons']) && is_string($data['icons'])) {
@@ -173,8 +180,24 @@ class GalleryItemController extends Controller
                 $images[] = Storage::disk('public')->putFile('gallery', $file);
             }
         }
-
         $data['images'] = $images;
+
+        // Handle existing videos
+        $videos = [];
+        if ($request->has('existing_videos')) {
+            $existingVideos = json_decode($request->input('existing_videos'), true);
+            if (is_array($existingVideos)) {
+                $videos = $existingVideos;
+            }
+        }
+
+        // Add new videos
+        if ($request->hasFile('videos')) {
+            foreach ($request->file('videos') as $file) {
+                $videos[] = Storage::disk('public')->putFile('gallery/videos', $file);
+            }
+        }
+        $data['videos'] = $videos;
 
         // decode icons from JSON string if present
         if (isset($data['icons']) && is_string($data['icons'])) {
@@ -196,6 +219,13 @@ class GalleryItemController extends Controller
         // remove images from disk
         if (is_array($item->images)) {
             foreach ($item->images as $path) {
+                Storage::disk('public')->delete($path);
+            }
+        }
+
+        // remove videos from disk
+        if (is_array($item->videos)) {
+            foreach ($item->videos as $path) {
                 Storage::disk('public')->delete($path);
             }
         }

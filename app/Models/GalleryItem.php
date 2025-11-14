@@ -18,6 +18,7 @@ class GalleryItem extends Model
         'coverage',
         'price',
         'images',
+        'videos',
         'icons',
         'sort_order',
         'is_active',
@@ -29,6 +30,7 @@ class GalleryItem extends Model
         return [
             'price' => 'decimal:2',
             'images' => 'array',
+            'videos' => 'array',
             'icons' => 'array',
             'is_active' => 'boolean',
         ];
