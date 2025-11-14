@@ -244,7 +244,7 @@ export default function Gallery({ items, categories, filters }: Props) {
                                             £{parseFloat(item.price).toFixed(2)}
                                         </div>
                                         {item.images && item.images.length > 1 && (
-                                            <p className="text-sm text-muted-foreground">
+                                            <p className="text-sm text-orange-600">
                                                 +{item.images.length - 1} more{' '}
                                                 {item.images.length - 1 === 1 ? 'photo' : 'photos'}
                                             </p>
