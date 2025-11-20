@@ -18,6 +18,7 @@ class GalleryItem extends Model
         'coverage',
         'price',
         'images',
+        'main_image',
         'videos',
         'icons',
         'sort_order',

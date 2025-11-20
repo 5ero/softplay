@@ -55,6 +55,7 @@ export default function CreateGalleryItem({
     );
     const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
     const [selectedVideos, setSelectedVideos] = React.useState<File[]>([]);
+    const [mainImageIndex, setMainImageIndex] = React.useState<number>(0);
     const fileInputRef = React.useRef<HTMLInputElement>(null);
     const videoInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -72,6 +73,12 @@ export default function CreateGalleryItem({
 
     const removeFile = (index: number) => {
         setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
+        // Reset main image index if it was the removed image or higher
+        if (mainImageIndex >= index && mainImageIndex > 0) {
+            setMainImageIndex(mainImageIndex - 1);
+        } else if (mainImageIndex === index) {
+            setMainImageIndex(0);
+        }
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
@@ -230,19 +237,41 @@ export default function CreateGalleryItem({
                                                             alt={file.name}
                                                             className="h-full w-full object-cover"
                                                         />
-                                                        <Button
-                                                            type="button"
-                                                            variant="destructive"
-                                                            size="sm"
-                                                            className="absolute right-1 top-1 h-6 w-6 p-0"
-                                                            onClick={() => removeFile(index)}
-                                                        >
-                                                            ×
-                                                        </Button>
+                                                        {mainImageIndex === index && (
+                                                            <div className="absolute left-1 top-1 rounded bg-green-600 px-2 py-1 text-xs font-semibold text-white">
+                                                                Main
+                                                            </div>
+                                                        )}
+                                                        <div className="absolute right-1 top-1 flex gap-1">
+                                                            <Button
+                                                                type="button"
+                                                                variant="secondary"
+                                                                size="sm"
+                                                                className="h-6 px-2 text-xs"
+                                                                onClick={() => setMainImageIndex(index)}
+                                                                disabled={mainImageIndex === index}
+                                                            >
+                                                                {mainImageIndex === index ? '★' : '☆'}
+                                                            </Button>
+                                                            <Button
+                                                                type="button"
+                                                                variant="destructive"
+                                                                size="sm"
+                                                                className="h-6 w-6 p-0"
+                                                                onClick={() => removeFile(index)}
+                                                            >
+                                                                ×
+                                                            </Button>
+                                                        </div>
                                                     </div>
                                                 ))}
                                             </div>
                                         )}
+                                        <input
+                                            type="hidden"
+                                            name="main_image_index"
+                                            value={mainImageIndex}
+                                        />
                                     </div>
 
                                     <div className="grid gap-2">

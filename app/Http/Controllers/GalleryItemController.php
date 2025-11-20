@@ -125,6 +125,14 @@ class GalleryItemController extends Controller
         }
         $data['images'] = $images;
 
+        // Set main image based on index
+        if ($request->has('main_image_index') && count($images) > 0) {
+            $mainImageIndex = (int) $request->input('main_image_index');
+            if (isset($images[$mainImageIndex])) {
+                $data['main_image'] = $images[$mainImageIndex];
+            }
+        }
+
         $videos = [];
         if ($request->hasFile('videos')) {
             foreach ($request->file('videos') as $file) {
@@ -193,6 +201,11 @@ class GalleryItemController extends Controller
             }
         }
         $data['images'] = $images;
+
+        // Handle main image
+        if ($request->has('main_image')) {
+            $data['main_image'] = $request->input('main_image');
+        }
 
         // Handle existing videos
         $videos = [];

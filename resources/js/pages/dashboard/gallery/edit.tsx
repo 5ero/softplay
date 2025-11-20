@@ -52,6 +52,7 @@ interface GalleryItem {
     coverage?: string;
     price: string;
     images: string[];
+    main_image?: string;
     videos?: string[];
     icons: { src: string; label: string }[];
     is_active: boolean;
@@ -78,6 +79,9 @@ export default function EditGalleryItem({
     );
     const [existingVideos, setExistingVideos] = React.useState<string[]>(
         item.videos || []
+    );
+    const [mainImage, setMainImage] = React.useState<string>(
+        item.main_image || ''
     );
     const fileInputRef = React.useRef<HTMLInputElement>(null);
     const videoInputRef = React.useRef<HTMLInputElement>(null);
@@ -109,7 +113,15 @@ export default function EditGalleryItem({
     };
 
     const removeExistingImage = (index: number) => {
+        const imageToRemove = existingImages[index];
+        if (imageToRemove === mainImage) {
+            setMainImage('');
+        }
         setExistingImages((prev) => prev.filter((_, i) => i !== index));
+    };
+
+    const setAsMainImage = (image: string) => {
+        setMainImage(image);
     };
 
     const removeExistingVideo = (index: number) => {
@@ -254,19 +266,38 @@ export default function EditGalleryItem({
                                                                 alt={`${item.title} ${index + 1}`}
                                                                 className="h-full w-full object-cover"
                                                             />
-                                                            <Button
-                                                                type="button"
-                                                                variant="destructive"
-                                                                size="sm"
-                                                                className="absolute right-1 top-1 h-6 w-6 p-0"
-                                                                onClick={() =>
-                                                                    removeExistingImage(
-                                                                        index
-                                                                    )
-                                                                }
-                                                            >
-                                                                ×
-                                                            </Button>
+                                                            {mainImage === image && (
+                                                                <div className="absolute left-1 top-1 rounded bg-green-600 px-2 py-1 text-xs font-semibold text-white">
+                                                                    Main
+                                                                </div>
+                                                            )}
+                                                            <div className="absolute right-1 top-1 flex gap-1">
+                                                                <Button
+                                                                    type="button"
+                                                                    variant="secondary"
+                                                                    size="sm"
+                                                                    className="h-6 px-2 text-xs"
+                                                                    onClick={() =>
+                                                                        setAsMainImage(image)
+                                                                    }
+                                                                    disabled={mainImage === image}
+                                                                >
+                                                                    {mainImage === image ? '★' : '☆'}
+                                                                </Button>
+                                                                <Button
+                                                                    type="button"
+                                                                    variant="destructive"
+                                                                    size="sm"
+                                                                    className="h-6 w-6 p-0"
+                                                                    onClick={() =>
+                                                                        removeExistingImage(
+                                                                            index
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    ×
+                                                                </Button>
+                                                            </div>
                                                         </div>
                                                     )
                                                 )}
@@ -278,6 +309,11 @@ export default function EditGalleryItem({
                                         type="hidden"
                                         name="existing_images"
                                         value={JSON.stringify(existingImages)}
+                                    />
+                                    <input
+                                        type="hidden"
+                                        name="main_image"
+                                        value={mainImage}
                                     />
 
                                     <div className="grid gap-2">

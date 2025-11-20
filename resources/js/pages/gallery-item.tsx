@@ -26,6 +26,7 @@ interface GalleryItem {
     coverage?: string;
     price: string;
     images: string[];
+    main_image?: string;
     videos?: string[];
     icons?: IconData[];
     category: Category;
@@ -36,6 +37,13 @@ interface Props {
 }
 
 export default function GalleryItemView({ item }: Props) {
+    // Sort images so main image is first
+    const sortedImages = item.images && item.images.length > 0 
+        ? item.main_image 
+            ? [item.main_image, ...item.images.filter(img => img !== item.main_image)]
+            : item.images
+        : [];
+    
     const [selectedImage, setSelectedImage] = useState(0);
     const isSoftPlaySet = item.category.slug === 'soft-play-sets';
 
@@ -63,20 +71,20 @@ export default function GalleryItemView({ item }: Props) {
                         {/* Images Section */}
                         <div className="space-y-4">
                             {/* Main Image */}
-                            {item.images && item.images.length > 0 ? (
+                            {sortedImages.length > 0 ? (
                                 <>
                                     <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
                                         <img
-                                            src={`/storage/${item.images[selectedImage]}`}
+                                            src={`/storage/${sortedImages[selectedImage]}`}
                                             alt={`${item.title} - Image ${selectedImage + 1}`}
                                             className="h-full w-full object-cover"
                                         />
                                     </div>
 
                                     {/* Thumbnail Gallery */}
-                                    {item.images.length > 1 && (
+                                    {sortedImages.length > 1 && (
                                         <div className="grid grid-cols-4 gap-2">
-                                            {item.images.map((image, index) => (
+                                            {sortedImages.map((image, index) => (
                                                 <button
                                                     key={index}
                                                     onClick={() => setSelectedImage(index)}

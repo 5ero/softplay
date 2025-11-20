@@ -29,6 +29,7 @@ interface GalleryItem {
     coverage?: string;
     price: string;
     images: string[];
+    main_image?: string;
     category: Category;
 }
 
@@ -207,13 +208,17 @@ export default function Gallery({ items, categories, filters }: Props) {
                 {/* Gallery Grid */}
                 {items.length > 0 ? (
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {items.map((item) => (
+                        {items.map((item) => {
+                            // Display main image first if set, otherwise first image
+                            const displayImage = item.main_image || item.images[0];
+                            
+                            return (
                             <Link key={item.id} href={`/gallery/${item.id}`}>
                                 <Card className="overflow-hidden transition-shadow hover:shadow-lg cursor-pointer">
                                     <div className="aspect-square overflow-hidden bg-gray-100">
-                                        {item.images && item.images.length > 0 ? (
+                                        {displayImage ? (
                                             <img
-                                                src={`/storage/${item.images[0]}`}
+                                                src={`/storage/${displayImage}`}
                                                 alt={item.title}
                                                 className="h-full w-full object-cover transition-transform hover:scale-105"
                                             />
@@ -252,7 +257,8 @@ export default function Gallery({ items, categories, filters }: Props) {
                                     </CardFooter>
                                 </Card>
                             </Link>
-                        ))}
+                        );
+                        })}
                     </div>
                 ) : (
                     <Card className="p-8 text-center">
