@@ -10,7 +10,7 @@ const Hero = () => {
                             Soft play areas for <span className="text-orange-600">kids</span>
                         </h1>
                         <div className="md:hidden">
-                            <img src="/storageimg/displays/PhotoRoom_20231123_153629.png" alt="" />
+                            <img src="/storage/img/displays/PhotoRoom_20231123_153629.png" alt="" />
                         </div>
                         <div className="prose text-xl leading-relaxed md:mt-4 text-gray-600">
                             <span className="font-semibold text-2xl">Funtime Softplay</span> offer a vibrant and engaging environment designed to ignite the imagination and energy of young ones. These playgrounds are a haven of padded structures, ball pits, and bouncy castles, all carefully crafted to encourage exploration, social interaction, and physical activity.
