@@ -17,6 +17,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
@@ -358,6 +359,17 @@ export default function CreateGalleryItem({
                                             Lower numbers appear first
                                         </p>
                                         <InputError message={errors.sort_order} />
+                                    </div>
+
+                                    <div className="flex items-center space-x-3">
+                                        <Checkbox
+                                            id="is_package"
+                                            name="is_package"
+                                            value="1"
+                                        />
+                                        <Label htmlFor="is_package" className="font-normal cursor-pointer">
+                                            This is a package
+                                        </Label>
                                     </div>
 
                                     <div className="flex items-center gap-4">

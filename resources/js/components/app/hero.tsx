@@ -6,8 +6,8 @@ const Hero = () => {
             <div className="flex flex-col items-center">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row rounded-lg p-8">
                     <div className="w-full md:w-1/3">
-                        <h1 className="text-5xl font-bold text-gray-700">
-                           The one stop shop for <span className='text-orange-600'>event planners</span> &  <span className='text-gray-400'>party people</span>
+                        <h1 className="text-5xl font-bold text-orange-600">
+                          Next level parties start with our unique luxury soft play
                         </h1>
                         <div className="md:hidden">
                             <img src="/storage/img/home/softplay-main-image.jpg" alt="" />

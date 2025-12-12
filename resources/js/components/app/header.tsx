@@ -11,14 +11,16 @@ const Header = () => {
     return (
         <div className="md:fixed w-full border-b-2 border-slate-500 bg-slate-50 shadow-xl z-50">
             <div className="max-w-7xl mx-auto flex flex-row items-center justify-between">
-                <div className="p-4">
+                <div className="p-3">
                     <img src="/storage/img/logo/funtime-softplay-logo-trans.png" alt="" className="w-32 md:w-44" />
                 </div>
                 <div className="hidden md:flex flex-row items-center justify-end w-full">
                     <NavItem title="Home" href="/" />
-                    <NavItem title="About" href="/about" />
                     <NavItem title="Gallery" href="/gallery" />
-                    <NavItem title="Contact" href="/contact" />
+                    <NavItem title="Prices" href="/prices" />
+                    <NavItem title="Packages" href="/packages" />
+                    <NavItem title="About us" href="/about" />
+                    <NavItem title="Contact us" href="/contact" />
                     {auth.user ? (
                         <NavItem
                             title="Dashboard"

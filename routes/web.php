@@ -21,9 +21,7 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/about', function () {
-    return Inertia::render('about');
-})->name('about');
+Route::get('/about', [\App\Http\Controllers\AboutContentController::class, 'show'])->name('about');
 
 Route::get('/contact', function () {
     return Inertia::render('contact');
@@ -33,6 +31,32 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 Route::get('/gallery', [\App\Http\Controllers\GalleryItemController::class, 'publicIndex'])->name('gallery');
 Route::get('/gallery/{id}', [\App\Http\Controllers\GalleryItemController::class, 'publicShow'])->name('gallery.show');
+
+Route::get('/prices', function () {
+    return Inertia::render('prices');
+})->name('prices');
+
+Route::get('/packages', function () {
+    $packages = GalleryItem::with('category')
+        ->where('is_active', true)
+        ->where('is_package', true)
+        ->orderBy('sort_order')
+        ->get();
+
+    $categories = Category::orderBy('sort_order')->get();
+
+    return Inertia::render('packages', [
+        'items' => $packages,
+        'categories' => $categories,
+        'filters' => [
+            'search' => request('search'),
+            'category' => request('category'),
+            'min_price' => request('min_price'),
+            'max_price' => request('max_price'),
+        ],
+    ]);
+})->name('packages');
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
@@ -64,6 +88,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::resource('categories', \App\Http\Controllers\CategoryController::class);
         Route::resource('gallery', \App\Http\Controllers\GalleryItemController::class);
+        Route::get('about', [\App\Http\Controllers\AboutContentController::class, 'edit'])->name('about.edit');
+        Route::put('about', [\App\Http\Controllers\AboutContentController::class, 'update'])->name('about.update');
     });
 });
 

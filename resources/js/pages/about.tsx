@@ -4,12 +4,18 @@ import HeroAbout from '@/components/app/heroAbout';
 import { type SharedData } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
 
-export default function Welcome() {
+interface AboutContent {
+    id: number;
+    title: string;
+    content: string;
+}
+
+export default function Welcome({ content }: { content: AboutContent }) {
     const { auth } = usePage<SharedData>().props;
 
     return (
         <>
-            <Head title="Welcome">
+            <Head title="About">
                 <link rel="preconnect" href="https://fonts.bunny.net" />
                 <link
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
@@ -18,7 +24,7 @@ export default function Welcome() {
             </Head>
             <div className="flex flex-col min-h-screen">
                 <Header />
-                <HeroAbout />
+                <HeroAbout title={content.title} content={content.content} />
                 <Footer />
             </div>
         </>

@@ -18,7 +18,8 @@ class GalleryItemController extends Controller
     public function publicIndex(Request $request)
     {
         $query = GalleryItem::with('category')
-            ->where('is_active', true);
+            ->where('is_active', true)
+            ->where('is_package', false);
 
         // Search filter
         if ($request->filled('search')) {

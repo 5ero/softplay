@@ -23,6 +23,7 @@ class GalleryItem extends Model
         'icons',
         'sort_order',
         'is_active',
+        'is_package',
         'view_count',
     ];
 
@@ -34,6 +35,7 @@ class GalleryItem extends Model
             'videos' => 'array',
             'icons' => 'array',
             'is_active' => 'boolean',
+            'is_package' => 'boolean',
         ];
     }
 
