@@ -33,7 +33,14 @@ Route::get('/gallery', [\App\Http\Controllers\GalleryItemController::class, 'pub
 Route::get('/gallery/{id}', [\App\Http\Controllers\GalleryItemController::class, 'publicShow'])->name('gallery.show');
 
 Route::get('/prices', function () {
-    return Inertia::render('prices');
+    $items = GalleryItem::with('category')
+        ->where('is_active', true)
+        ->orderBy('sort_order')
+        ->get();
+
+    return Inertia::render('prices', [
+        'items' => $items,
+    ]);
 })->name('prices');
 
 Route::get('/packages', function () {
