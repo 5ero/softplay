@@ -1,7 +1,16 @@
 import { Head } from '@inertiajs/react';
+import { useState } from 'react';
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
 
 interface Category {
     id: number;
@@ -12,6 +21,8 @@ interface Category {
 interface GalleryItem {
     id: number;
     title: string;
+    description: string;
+    coverage?: string;
     price: string;
     images: string[];
     main_image?: string;
@@ -23,6 +34,8 @@ interface Props {
 }
 
 export default function Prices({ items }: Props) {
+    const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
+
     return (
         <>
             <Head title="Prices">
@@ -54,19 +67,22 @@ export default function Prices({ items }: Props) {
                                     return (
                                         <div
                                             key={item.id}
-                                            className="flex items-center gap-4 rounded-lg border p-3 transition-colors hover:bg-accent"
+                                            onClick={() => setSelectedItem(item)}
+                                            className="flex cursor-pointer items-center gap-4 rounded-lg border p-3 transition-colors hover:bg-accent"
                                         >
-                                            {displayImage ? (
-                                                <img
-                                                    src={`/storage/${displayImage}`}
-                                                    alt={item.title}
-                                                    className="h-16 w-16 rounded object-cover"
-                                                />
-                                            ) : (
-                                                <div className="flex h-16 w-16 items-center justify-center rounded bg-gray-100 text-gray-400">
-                                                    No image
-                                                </div>
-                                            )}
+                                            <div className="overflow-hidden rounded">
+                                                {displayImage ? (
+                                                    <img
+                                                        src={`/storage/${displayImage}`}
+                                                        alt={item.title}
+                                                        className="h-16 w-16 rounded object-cover transition-transform hover:scale-110"
+                                                    />
+                                                ) : (
+                                                    <div className="flex h-16 w-16 items-center justify-center rounded bg-gray-100 text-gray-400">
+                                                        No image
+                                                    </div>
+                                                )}
+                                            </div>
                                             
                                             <div className="flex-1">
                                                 <h3 className="font-semibold text-gray-900">
@@ -97,6 +113,68 @@ export default function Prices({ items }: Props) {
                 </div>
                 <Footer />
             </div>
+
+            <Dialog open={!!selectedItem} onOpenChange={(open) => !open && setSelectedItem(null)}>
+                <DialogContent className="max-h-[90vh] max-w-4xl overflow-y-auto">
+                    {selectedItem && (
+                        <>
+                            <DialogHeader>
+                                <DialogTitle className="text-2xl">{selectedItem.title}</DialogTitle>
+                                <DialogDescription>
+                                    <Badge variant="secondary" className="mt-2">
+                                        {selectedItem.category.name}
+                                    </Badge>
+                                </DialogDescription>
+                            </DialogHeader>
+                            
+                            <div className="grid gap-6 md:grid-cols-2">
+                                <div className="space-y-4">
+                                    {selectedItem.images.length > 0 ? (
+                                        <div className="grid gap-2">
+                                            {selectedItem.images.map((image, index) => (
+                                                <div key={index} className="overflow-hidden rounded-lg">
+                                                    <img
+                                                        src={`/storage/${image}`}
+                                                        alt={`${selectedItem.title} - Image ${index + 1}`}
+                                                        className="h-auto w-full object-cover"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="flex h-64 items-center justify-center rounded-lg bg-gray-100 text-gray-400">
+                                            No images available
+                                        </div>
+                                    )}
+                                </div>
+                                
+                                <div className="space-y-4">
+                                    <div>
+                                        <h3 className="text-lg font-semibold">Price</h3>
+                                        <p className="text-3xl font-bold text-primary">
+                                            £{parseFloat(selectedItem.price).toFixed(2)}
+                                        </p>
+                                    </div>
+                                    
+                                    {selectedItem.description && (
+                                        <div>
+                                            <h3 className="text-lg font-semibold">Description</h3>
+                                            <p className="text-gray-700">{selectedItem.description}</p>
+                                        </div>
+                                    )}
+                                    
+                                    {selectedItem.coverage && (
+                                        <div>
+                                            <h3 className="text-lg font-semibold">Coverage</h3>
+                                            <p className="text-gray-700">{selectedItem.coverage}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </DialogContent>
+            </Dialog>
         </>
     );
 }
