@@ -13,7 +13,7 @@ import {
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Tag, Images, ExternalLink, FileText, DollarSign } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, Tag, Images, ExternalLink, FileText, PoundSterling } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -40,7 +40,7 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Prices',
         href: '/dashboard/prices',
-        icon: DollarSign,
+        icon: PoundSterling,
     },
     {
         title: 'About Content',
