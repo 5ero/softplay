@@ -5,7 +5,6 @@ use App\Models\Category;
 use App\Models\GalleryItem;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Laravel\Fortify\Features;
 
 Route::get('/', function () {
     $softPlayCategory = Category::where('slug', 'soft-play-sets')->first();
@@ -64,7 +63,6 @@ Route::get('/packages', function () {
     ]);
 })->name('packages');
 
-
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         $stats = [
@@ -97,6 +95,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('gallery', \App\Http\Controllers\GalleryItemController::class);
         Route::get('about', [\App\Http\Controllers\AboutContentController::class, 'edit'])->name('about.edit');
         Route::put('about', [\App\Http\Controllers\AboutContentController::class, 'update'])->name('about.update');
+        Route::get('prices', [\App\Http\Controllers\Dashboard\PriceController::class, 'index'])->name('prices.index');
+        Route::patch('prices/{item}', [\App\Http\Controllers\Dashboard\PriceController::class, 'update'])->name('prices.update');
     });
 });
 
