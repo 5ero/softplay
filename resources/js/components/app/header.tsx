@@ -48,14 +48,14 @@ const Header = () => {
                             </svg>
                         </button>
                     </div>
-                    {showMobileNav && (
-                        <div className="md:hidden absolute w-1/2 top-0 left-0 min-h-screen flex flex-col items-center bg-orange-600 space-y-10 pt-20 transition-transform duration-300 ease-in-out z-50">
-                            <NavItem title="Home" href="/" />
-                            <NavItem title="About" href="/about" />
-                            <NavItem title="Gallery" href="/gallery" />
-                            <NavItem title="Contact" href="/contact" />
-                        </div>
-                    )}
+                    <div className={`md:hidden absolute w-1/2 top-0 left-0 min-h-screen flex flex-col items-center bg-orange-600 space-y-10 pt-20 z-50 transition-transform duration-300 ease-in-out ${showMobileNav ? 'translate-x-0' : '-translate-x-full'}`}>
+                        <NavItem title="Home" href="/" />
+                        <NavItem title="Gallery" href="/gallery" />
+                        <NavItem title="Prices" href="/prices" />
+                        <NavItem title="Packages" href="/packages" />
+                        <NavItem title="About us" href="/about" />
+                        <NavItem title="Contact us" href="/contact" />
+                    </div>
                 </div>
             </div>
         </div>

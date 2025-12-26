@@ -6,7 +6,7 @@ const Hero = () => {
             <div className="flex flex-col items-center">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row rounded-lg p-8">
                     <div className="w-full md:w-1/3">
-                        <h1 className="text-5xl font-bold text-orange-600">
+                        <h1 className="text-4xl md:text-5xl font-bold text-orange-600 mb-4">
                           Next level parties start with our unique luxury soft play
                         </h1>
                         <div className="md:hidden">
