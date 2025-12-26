@@ -5,11 +5,11 @@ const NavItem = ({ title, href, method = 'get' }: { title: string; href: string;
     const isActive = url === href || url.startsWith(href + '/');
 
     return (
-        <div className="mx-4">
+        <div className="md:mx-4">
             <Link
                 href={href}
                 method={method}
-                className={`font-semibold text-slate-800 rounded py-2 px-3 hover:bg-orange-600 hover:text-white ${isActive ? 'bg-orange-600 text-white' : ''}`}
+                className={`font-semibold text-slate-800 rounded py-2 px-3 hover:bg-orange-600 hover:text-white ${isActive ? 'md:bg-orange-600 text-white' : ''}`}
             >
                 {title}
             </Link>
