@@ -195,7 +195,7 @@ export default function Gallery({ items, categories, filters }: Props) {
                                     type="number"
                                     min="0"
                                     step="0.01"
-                                    placeholder="999.99"
+                                    placeholder="5000.00"
                                     value={maxPrice}
                                     onChange={(e) => setMaxPrice(e.target.value)}
                                 />
