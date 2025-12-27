@@ -107,10 +107,9 @@ export default function Packages({ items, categories, filters }: Props) {
 
                 {/* Filter Section */}
                 <Card className="mb-8">
-                    <CardContent className="pt-6">
+                    <CardContent className="">
                         {/* Search - Always Visible */}
                         <div className="space-y-2 mb-4">
-                            <Label htmlFor="search">Search</Label>
                             <div className="relative">
                                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                                 <Input
