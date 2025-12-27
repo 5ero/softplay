@@ -1,8 +1,7 @@
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
 import HeroAbout from '@/components/app/heroAbout';
-import { type SharedData } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 
 interface AboutContent {
     id: number;
@@ -11,8 +10,6 @@ interface AboutContent {
 }
 
 export default function Welcome({ content }: { content: AboutContent }) {
-    const { auth } = usePage<SharedData>().props;
-
     return (
         <>
             <Head title="About us">

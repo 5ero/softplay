@@ -34,7 +34,7 @@ export default function Contact() {
                                     </div>
                                 )}
                                 <Form {...contactStore()}>
-                                    {({ errors, processing, wasSuccessful }) => (
+                                    {({ errors, processing, wasSuccessful: _wasSuccessful }) => (
                                         <>
                                             <div className="mb-4">
                                                 <label htmlFor="name" className="block text-slate-600 mb-2">Name</label>
