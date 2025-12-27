@@ -1,20 +1,8 @@
-import { useState } from 'react';
-import { Head, router, Link } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Search, X, ChevronDown } from 'lucide-react';
 
 interface Category {
     id: number;
@@ -33,58 +21,11 @@ interface GalleryItem {
     category: Category;
 }
 
-interface Filters {
-    search?: string;
-    category?: number;
-    min_price?: string;
-    max_price?: string;
-}
-
 interface Props {
     items: GalleryItem[];
-    categories: Category[];
-    filters: Filters;
 }
 
-export default function Gallery({ items, categories, filters }: Props) {
-    const [search, setSearch] = useState(filters.search || '');
-    const [category, setCategory] = useState(filters.category?.toString() || 'all');
-    const [minPrice, setMinPrice] = useState(filters.min_price || '');
-    const [maxPrice, setMaxPrice] = useState(filters.max_price || '');
-    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
-
-    const applyFilters = () => {
-        const params: Record<string, string> = {};
-
-        if (search) {
-            params.search = search;
-        }
-        if (category && category !== 'all') {
-            params.category = category;
-        }
-        if (minPrice) {
-            params.min_price = minPrice;
-        }
-        if (maxPrice) {
-            params.max_price = maxPrice;
-        }
-
-        router.get('/gallery', params, {
-            preserveState: true,
-            preserveScroll: true,
-        });
-    };
-
-    const clearFilters = () => {
-        setSearch('');
-        setCategory('all');
-        setMinPrice('');
-        setMaxPrice('');
-        router.get('/gallery');
-    };
-
-    const hasActiveFilters =
-        filters.search || filters.category || filters.min_price || filters.max_price;
+export default function Gallery({ items }: Props) {
 
     return (
         <>
@@ -104,113 +45,6 @@ export default function Gallery({ items, categories, filters }: Props) {
                             Browse our collection of soft play equipment and party rentals
                         </p>
                     </div>
-
-                {/* Filter Section */}
-                <Card className="mb-8">
-                    <CardContent className="">
-                        {/* Search - Always Visible */}
-                        <div className="space-y-2 mb-4">
-                            <div className="relative">
-                                <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                                <Input
-                                    id="search"
-                                    placeholder="Search items..."
-                                    value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter') {
-                                            applyFilters();
-                                        }
-                                    }}
-                                    className="pl-8"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Accordion Header for Additional Filters */}
-                        <div 
-                            className="flex items-center justify-between cursor-pointer py-2 border-t pt-4"
-                            onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                        >
-                            <h3 className="text-sm font-semibold">Additional Filters</h3>
-                            <div className="flex items-center gap-2">
-                                {hasActiveFilters && (
-                                    <Button
-                                        variant="ghost"
-                                        size="sm"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            clearFilters();
-                                        }}
-                                        className="text-muted-foreground"
-                                    >
-                                        <X className="mr-2 h-4 w-4" />
-                                        Clear filters
-                                    </Button>
-                                )}
-                                <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${isFiltersOpen ? 'rotate-180' : ''}`} />
-                            </div>
-                        </div>
-
-                        {/* Collapsible Filters */}
-                        <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isFiltersOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                            <div className="grid gap-4 md:grid-cols-3 pt-4">
-                            {/* Category Filter */}
-                            <div className="space-y-2">
-                                <Label htmlFor="category">Category</Label>
-                                <Select value={category} onValueChange={setCategory}>
-                                    <SelectTrigger id="category">
-                                        <SelectValue placeholder="All categories" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="all">All categories</SelectItem>
-                                        {categories.map((cat) => (
-                                            <SelectItem key={cat.id} value={cat.id.toString()}>
-                                                {cat.name}
-                                            </SelectItem>
-                                        ))}
-                                    </SelectContent>
-                                </Select>
-                            </div>
-
-                            {/* Min Price */}
-                            <div className="space-y-2">
-                                <Label htmlFor="min_price">Min Price</Label>
-                                <Input
-                                    id="min_price"
-                                    type="number"
-                                    min="0"
-                                    step="0.01"
-                                    placeholder="0.00"
-                                    value={minPrice}
-                                    onChange={(e) => setMinPrice(e.target.value)}
-                                />
-                            </div>
-
-                            {/* Max Price */}
-                            <div className="space-y-2">
-                                <Label htmlFor="max_price">Max Price</Label>
-                                <Input
-                                    id="max_price"
-                                    type="number"
-                                    min="0"
-                                    step="0.01"
-                                    placeholder="5000.00"
-                                    value={maxPrice}
-                                    onChange={(e) => setMaxPrice(e.target.value)}
-                                />
-                            </div>
-                        </div>
-                        </div>
-
-                        {/* Apply Filters Button */}
-                        <div className="mt-4">
-                            <Button onClick={applyFilters} className="w-full md:w-auto">
-                                Apply Filters
-                            </Button>
-                        </div>
-                    </CardContent>
-                </Card>
 
                 {/* Results */}
                 <div className="mb-4">
