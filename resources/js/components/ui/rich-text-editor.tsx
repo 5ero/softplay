@@ -26,7 +26,11 @@ interface RichTextEditorProps {
 export function RichTextEditor({ content, onChange, name }: RichTextEditorProps) {
     const editor = useEditor({
         extensions: [
-            StarterKit,
+            StarterKit.configure({
+                heading: {
+                    levels: [1, 2, 3],
+                },
+            }),
             Underline,
             TextAlign.configure({
                 types: ['heading', 'paragraph'],
@@ -35,6 +39,11 @@ export function RichTextEditor({ content, onChange, name }: RichTextEditorProps)
         content,
         onUpdate: ({ editor }) => {
             onChange(editor.getHTML());
+        },
+        editorProps: {
+            attributes: {
+                class: 'prose prose-sm max-w-none focus:outline-none',
+            },
         },
     });
 
@@ -139,7 +148,7 @@ export function RichTextEditor({ content, onChange, name }: RichTextEditorProps)
             {/* Editor Content */}
             <EditorContent 
                 editor={editor} 
-                className="prose prose-sm max-w-none p-4 min-h-[150px] focus:outline-none"
+                className="p-4 min-h-[150px]"
             />
 
             {/* Hidden input for form submission */}
