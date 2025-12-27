@@ -49,33 +49,33 @@ const Header = () => {
                             </svg>
                         </button>
                     </div>
-                    <div className={`fixed md:hidden w-1/2 top-0 left-0 min-h-screen flex flex-col bg-orange-600 space-y-4 pt-4 z-50 transition-transform duration-300 ease-in-out ${showMobileNav ? 'translate-x-0' : '-translate-x-full'}`}>
+                    <div className={`fixed md:hidden w-1/2 top-0 left-0 min-h-screen flex flex-col bg-gray-50 border-r border-gray-300 shadow-xl space-y-4 pt-4 z-50 transition-transform duration-300 ease-in-out ${showMobileNav ? 'translate-x-0' : '-translate-x-full'}`}>
                         <div className="p-3">
                             <img src="/storage/img/logo/funtime-softplay-logo-trans.png" alt="" className="w-32 md:w-44 object-center ml-4" />
                         </div>
-                        <div className='flex flex-row items-center justify-start bg-orange-400 rounded mx-4 p-2'>
-                            <House />
+                        <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 shadow'>
+                            <div className='bg-white rounded-full p-2'><House /></div>
                             <NavItem title="Home" href="/" />
                         </div>
-                        <div className='flex flex-row items-center justify-start bg-orange-400 rounded mx-4 p-2 text-gray-800'>
-                            <Images />
+                        <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
+                            <div className='bg-white rounded-full p-2'><Images /></div>
                             <NavItem title="Gallery" href="/gallery" />
                         </div>
-                        <div className='flex flex-row items-center justify-start bg-orange-400 rounded mx-4 p-2 text-gray-800'>
-                            <List />
+                        <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
+                            <div className='bg-white rounded-full p-2'><List /></div>
                             <NavItem title="Prices" href="/prices" />
                         </div>
-                        <div className='flex flex-row items-center justify-start bg-orange-400 rounded mx-4 p-2 text-gray-800'>
-                            <Pyramid />
+                        <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
+                            <div className='bg-white rounded-full p-2'><Pyramid /></div>
                             <NavItem title="Packages" href="/packages" />
                         </div>
-                        <div className='flex flex-row items-center justify-start bg-orange-400 rounded mx-4 p-2 text-gray-800'>
-                            <PersonStanding />
+                        <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
+                            <div className='bg-white rounded-full p-2'><PersonStanding /></div>
                             <NavItem title="About us" href="/about" />
                         </div>
-                        <div className='flex flex-row items-center justify-start bg-orange-400 rounded mx-4 p-2 text-gray-800'>
-                            <Mail />
-                            <NavItem title="Contact us" href="/contact" />
+                        <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
+                            <div className='bg-white rounded-full p-2'><Mail /></div>
+                            <NavItem title="Contact" href="/contact" />
                         </div>
                     </div>
                 </div>

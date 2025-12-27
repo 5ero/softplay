@@ -9,7 +9,7 @@ const NavItem = ({ title, href, method = 'get' }: { title: string; href: string;
             <Link
                 href={href}
                 method={method}
-                className={`font-semibold text-slate-800 rounded py-2 px-3 hover:bg-orange-600 hover:text-white ${isActive ? 'md:bg-orange-600 text-white' : ''}`}
+                className={`font-semibold text-slate-800 rounded py-2 px-3 hover:bg-orange-600 md:hover:text-white ${isActive ? 'md:bg-orange-600 md:text-white' : ''}`}
             >
                 {title}
             </Link>

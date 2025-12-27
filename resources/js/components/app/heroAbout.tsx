@@ -1,7 +1,7 @@
 const HeroAbout = ({ title, content }: { title: string; content: string }) => {
     return (
         <div>
-            <div className="bg-amber-50 md:pt-44">
+            <div className="bg-blue-50 md:pt-44">
                 <div className="flex flex-col items-center">
                     <div className="max-w-7xl mx-auto flex flex-col md:flex-row rounded-lg p-8">
                         <div className="w-full">

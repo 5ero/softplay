@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 
 const Hero = () => {
     return (
-        <div className="bg-amber-50 md:pt-44 w-screen">
+        <div className="bg-blue-50 md:pt-44 w-screen">
             <div className="flex flex-col items-center">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row rounded-lg p-8">
                     <div className="w-full md:w-1/3">

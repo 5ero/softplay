@@ -20,7 +20,7 @@ interface SetsProps {
     sets: SetItem[];
 }
 
-const bgColors = ['bg-white', 'bg-slate-100', 'bg-orange-100', 'bg-blue-100'];
+const bgColors = ['bg-white', 'bg-blue-50'];
 
 const Sets = ({ sets }: SetsProps) => {
     if (!sets || sets.length === 0) {
