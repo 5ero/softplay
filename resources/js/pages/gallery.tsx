@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/select';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Search, X } from 'lucide-react';
+import { Search, X, ChevronDown } from 'lucide-react';
 
 interface Category {
     id: number;
@@ -51,6 +51,7 @@ export default function Gallery({ items, categories, filters }: Props) {
     const [category, setCategory] = useState(filters.category?.toString() || 'all');
     const [minPrice, setMinPrice] = useState(filters.min_price || '');
     const [maxPrice, setMaxPrice] = useState(filters.max_price || '');
+    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
     const applyFilters = () => {
         const params: Record<string, string> = {};
@@ -106,44 +107,54 @@ export default function Gallery({ items, categories, filters }: Props) {
 
                 {/* Filter Section */}
                 <Card className="mb-8">
-                    <CardHeader>
-                        <div className="flex items-center justify-between">
-                            <h2 className="text-lg font-semibold">Filters</h2>
-                            {hasActiveFilters && (
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={clearFilters}
-                                    className="text-muted-foreground"
-                                >
-                                    <X className="mr-2 h-4 w-4" />
-                                    Clear filters
-                                </Button>
-                            )}
-                        </div>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                            {/* Search */}
-                            <div className="space-y-2">
-                                <Label htmlFor="search">Search</Label>
-                                <div className="relative">
-                                    <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                                    <Input
-                                        id="search"
-                                        placeholder="Search items..."
-                                        value={search}
-                                        onChange={(e) => setSearch(e.target.value)}
-                                        onKeyDown={(e) => {
-                                            if (e.key === 'Enter') {
-                                                applyFilters();
-                                            }
-                                        }}
-                                        className="pl-8"
-                                    />
-                                </div>
+                    <CardContent className="">
+                        {/* Search - Always Visible */}
+                        <div className="space-y-2 mb-4">
+                            <div className="relative">
+                                <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                                <Input
+                                    id="search"
+                                    placeholder="Search items..."
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            applyFilters();
+                                        }
+                                    }}
+                                    className="pl-8"
+                                />
                             </div>
+                        </div>
 
+                        {/* Accordion Header for Additional Filters */}
+                        <div 
+                            className="flex items-center justify-between cursor-pointer py-2 border-t pt-4"
+                            onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+                        >
+                            <h3 className="text-sm font-semibold">Additional Filters</h3>
+                            <div className="flex items-center gap-2">
+                                {hasActiveFilters && (
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            clearFilters();
+                                        }}
+                                        className="text-muted-foreground"
+                                    >
+                                        <X className="mr-2 h-4 w-4" />
+                                        Clear filters
+                                    </Button>
+                                )}
+                                <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${isFiltersOpen ? 'rotate-180' : ''}`} />
+                            </div>
+                        </div>
+
+                        {/* Collapsible Filters */}
+                        <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isFiltersOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                            <div className="grid gap-4 md:grid-cols-3 pt-4">
                             {/* Category Filter */}
                             <div className="space-y-2">
                                 <Label htmlFor="category">Category</Label>
@@ -190,12 +201,15 @@ export default function Gallery({ items, categories, filters }: Props) {
                                 />
                             </div>
                         </div>
+                        </div>
+
+                        {/* Apply Filters Button */}
+                        <div className="mt-4">
+                            <Button onClick={applyFilters} className="w-full md:w-auto">
+                                Apply Filters
+                            </Button>
+                        </div>
                     </CardContent>
-                    <CardFooter>
-                        <Button onClick={applyFilters} className="w-full md:w-auto">
-                            Apply Filters
-                        </Button>
-                    </CardFooter>
                 </Card>
 
                 {/* Results */}
