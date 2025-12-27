@@ -25,7 +25,7 @@ const Header = () => {
                     {auth.user ? (
                         <NavItem
                             title="Dashboard"
-                            href={dashboard()}
+                            href={dashboard.url()}
                             method="get"
                         />
                     ) : (
