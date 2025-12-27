@@ -47,7 +47,7 @@ export default function Prices({ items }: Props) {
             </Head>
             <div className="flex min-h-screen flex-col bg-amber-50">
                 <Header />
-                <div className="container mx-auto px-4 py-12 mt-20 md:mt-28">
+                <div className="container mx-auto px-4 py-12 md:mt-28">
                     <div className="mb-8">
                         <h1 className="text-4xl font-bold text-gray-900">Our Prices</h1>
                         <p className="mt-2 text-gray-600">

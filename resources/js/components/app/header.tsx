@@ -49,7 +49,7 @@ const Header = () => {
                             </svg>
                         </button>
                     </div>
-                    <div className={`md:hidden absolute w-1/2 top-0 left-0 min-h-screen flex flex-col bg-orange-600 space-y-4 pt-4 z-50 transition-transform duration-300 ease-in-out ${showMobileNav ? 'translate-x-0' : '-translate-x-full'}`}>
+                    <div className={`fixed md:hidden w-1/2 top-0 left-0 min-h-screen flex flex-col bg-orange-600 space-y-4 pt-4 z-50 transition-transform duration-300 ease-in-out ${showMobileNav ? 'translate-x-0' : '-translate-x-full'}`}>
                         <div className="p-3">
                             <img src="/storage/img/logo/funtime-softplay-logo-trans.png" alt="" className="w-32 md:w-44 object-center ml-4" />
                         </div>

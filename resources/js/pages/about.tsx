@@ -15,7 +15,7 @@ export default function Welcome({ content }: { content: AboutContent }) {
 
     return (
         <>
-            <Head title="About">
+            <Head title="About us">
                 <link rel="preconnect" href="https://fonts.bunny.net" />
                 <link
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"

@@ -96,7 +96,7 @@ export default function Packages({ items, categories, filters }: Props) {
             </Head>
             <div className="flex min-h-screen flex-col bg-amber-50">
                 <Header />
-                <div className="container mx-auto px-4 py-12 mt-20 md:mt-28">
+                <div className="container mx-auto px-4 py-12 md:mt-28">
                     <div className="mb-8">
                         <h1 className="text-5xl font-bold text-orange-600">Packages available</h1>
                         <p className="mt-2 text-lg text-gray-600">
@@ -184,7 +184,7 @@ export default function Packages({ items, categories, filters }: Props) {
                                     type="number"
                                     min="0"
                                     step="0.01"
-                                    placeholder="999.99"
+                                    placeholder="5000.00"
                                     value={maxPrice}
                                     onChange={(e) => setMaxPrice(e.target.value)}
                                 />
