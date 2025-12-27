@@ -6,7 +6,7 @@ const HeroContact = () => {
                     <div className="max-w-7xl mx-auto flex flex-col md:flex-row rounded-lg p-8">
                         <div className="w-full">
                             <h1 className="text-5xl font-bold">
-                                <span className="text-orange-600">Get in touch</span>
+                                <span className="text-gray-600">Get in touch</span>
                             </h1>
                             <div className="md:hidden">
                                 <img src="/img/displays/PhotoRoom_20231123_153629.png" alt="" />

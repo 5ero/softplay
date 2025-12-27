@@ -6,7 +6,7 @@ const HeroAbout = ({ title, content }: { title: string; content: string }) => {
                     <div className="max-w-7xl mx-auto flex flex-col md:flex-row rounded-lg p-8">
                         <div className="w-full">
                             <h1 className="text-5xl font-bold">
-                                <span className="text-orange-600">{title}</span>
+                                <span className="text-gray-600">{title}</span>
                             </h1>
                             <div className="flex flex-col md:flex-row">
                                 <div className="md:w-1/2 p-8">
