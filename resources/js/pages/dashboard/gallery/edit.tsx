@@ -18,7 +18,7 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Textarea } from '@/components/ui/textarea';
+import { RichTextEditor } from '@/components/ui/rich-text-editor';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Form, Head, Link } from '@inertiajs/react';
@@ -84,6 +84,9 @@ export default function EditGalleryItem({
     );
     const [mainImage, setMainImage] = React.useState<string>(
         item.main_image || ''
+    );
+    const [description, setDescription] = React.useState<string>(
+        item.description || ''
     );
     const fileInputRef = React.useRef<HTMLInputElement>(null);
     const videoInputRef = React.useRef<HTMLInputElement>(null);
@@ -212,11 +215,10 @@ export default function EditGalleryItem({
                                         <Label htmlFor="description">
                                             Description
                                         </Label>
-                                        <Textarea
-                                            id="description"
+                                        <RichTextEditor
+                                            content={description}
+                                            onChange={setDescription}
                                             name="description"
-                                            rows={4}
-                                            defaultValue={item.description}
                                         />
                                         <InputError
                                             message={errors.description}
