@@ -3,6 +3,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import { Toggle } from '@/components/ui/toggle';
+import { useEffect, useRef } from 'react';
 import {
     Bold,
     Italic,
@@ -24,6 +25,8 @@ interface RichTextEditorProps {
 }
 
 export function RichTextEditor({ content, onChange, name }: RichTextEditorProps) {
+    const inputRef = useRef<HTMLInputElement>(null);
+    
     const editor = useEditor({
         extensions: [
             StarterKit.configure({
@@ -38,7 +41,12 @@ export function RichTextEditor({ content, onChange, name }: RichTextEditorProps)
         ],
         content,
         onUpdate: ({ editor }) => {
-            onChange(editor.getHTML());
+            const html = editor.getHTML();
+            onChange(html);
+            // Update hidden input value
+            if (inputRef.current) {
+                inputRef.current.value = html;
+            }
         },
         editorProps: {
             attributes: {
@@ -46,6 +54,13 @@ export function RichTextEditor({ content, onChange, name }: RichTextEditorProps)
             },
         },
     });
+
+    // Update hidden input on mount and when content changes externally
+    useEffect(() => {
+        if (inputRef.current && editor) {
+            inputRef.current.value = editor.getHTML();
+        }
+    }, [editor, content]);
 
     if (!editor) {
         return null;
@@ -153,7 +168,7 @@ export function RichTextEditor({ content, onChange, name }: RichTextEditorProps)
 
             {/* Hidden input for form submission */}
             {name && (
-                <input type="hidden" name={name} value={editor.getHTML()} />
+                <input ref={inputRef} type="hidden" name={name} defaultValue={content} />
             )}
         </div>
     );
