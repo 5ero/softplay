@@ -140,9 +140,10 @@ export default function GalleryIndex({ items, categories, filters }: GalleryInde
                             </CardHeader>
                             <CardContent>
                                 <div className="space-y-3">
-                                    <p className="line-clamp-2 text-sm text-muted-foreground">
-                                        {item.description}
-                                    </p>
+                                    <div 
+                                        className="line-clamp-2 text-sm text-muted-foreground"
+                                        dangerouslySetInnerHTML={{ __html: item.description }}
+                                    />
                                     <p className="text-lg font-semibold">
                                         £{item.price}
                                     </p>

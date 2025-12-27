@@ -139,9 +139,10 @@ export default function GalleryItemView({ item }: Props) {
 
                             <div>
                                 <h2 className="mb-2 text-xl font-semibold">Description</h2>
-                                <p className="text-gray-600 leading-relaxed whitespace-pre-line">
-                                    {item.description}
-                                </p>
+                                <div 
+                                    className="text-gray-600 leading-relaxed prose prose-sm max-w-none"
+                                    dangerouslySetInnerHTML={{ __html: item.description }}
+                                />
                             </div>
 
                             {/* Videos Section */}

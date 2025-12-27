@@ -159,7 +159,10 @@ export default function Prices({ items }: Props) {
                                     {selectedItem.description && (
                                         <div>
                                             <h3 className="text-lg font-semibold">Description</h3>
-                                            <p className="text-gray-700">{selectedItem.description}</p>
+                                            <div 
+                                                className="text-gray-700 prose prose-sm max-w-none"
+                                                dangerouslySetInnerHTML={{ __html: selectedItem.description }}
+                                            />
                                         </div>
                                     )}
                                     

@@ -88,9 +88,10 @@ export default function Gallery({ items }: Props) {
                                         )}
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="line-clamp-3 text-sm text-gray-600">
-                                            {item.description}
-                                        </p>
+                                        <div 
+                                            className="line-clamp-3 text-sm text-gray-600"
+                                            dangerouslySetInnerHTML={{ __html: item.description }}
+                                        />
                                     </CardContent>
                                     <CardFooter className="flex items-center justify-between">
                                         <div className="text-2xl font-bold text-primary">

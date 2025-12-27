@@ -18,7 +18,7 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Textarea } from '@/components/ui/textarea';
+import { RichTextEditor } from '@/components/ui/rich-text-editor';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Form, Head, Link } from '@inertiajs/react';
@@ -54,6 +54,7 @@ export default function CreateGalleryItem({
     const [icons, setIcons] = React.useState<{ src: string; label: string }[]>(
         []
     );
+    const [description, setDescription] = React.useState<string>('');
     const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
     const [selectedVideos, setSelectedVideos] = React.useState<File[]>([]);
     const [mainImageIndex, setMainImageIndex] = React.useState<number>(0);
@@ -168,11 +169,10 @@ export default function CreateGalleryItem({
                                         <Label htmlFor="description">
                                             Description
                                         </Label>
-                                        <Textarea
-                                            id="description"
+                                        <RichTextEditor
+                                            content={description}
+                                            onChange={setDescription}
                                             name="description"
-                                            rows={4}
-                                            placeholder="Enter a detailed description..."
                                         />
                                         <InputError
                                             message={errors.description}
