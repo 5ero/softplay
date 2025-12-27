@@ -27,7 +27,7 @@ const Hero = () => {
                         <div className="order-last">
                             <Link
                                 href="/gallery"
-                                className="inline-block cursor-pointer bg-orange-600 hover:bg-orange-500 text-white rounded-lg p-4 mt-6 md:mt-4"
+                                className="inline-block cursor-pointer bg-blue-600 hover:bg-blue-500 text-white rounded-lg p-4 mt-6 md:mt-4"
                             >
                                 View Gallery
                             </Link>
