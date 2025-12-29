@@ -33,7 +33,7 @@ export default function Welcome({ sets }: { sets: SetItem[] }) {
             <div className="flex flex-col min-h-screen">
                 <Header />
                 <Hero />
-                <Sets sets={sets} />
+                {/* <Sets sets={sets} /> */}
                 <Footer />
             </div>
         </>
