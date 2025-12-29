@@ -78,7 +78,7 @@ const Sets = ({ sets }: SetsProps) => {
                         </p>
                         {set.coverage && (
                             <p className="text-slate-700 text-lg m-6">
-                                coverage: {set.coverage}
+                                Dimensions: {set.coverage}
                             </p>
                         )}
                         <div className="py-6 text-slate-700 text-2xl m-6">

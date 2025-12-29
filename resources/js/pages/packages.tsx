@@ -40,7 +40,7 @@ export default function Packages({ items }: Props) {
                 <Header />
                 <div className="container mx-auto px-4 py-12 md:mt-28">
                     <div className="mb-8">
-                        <h1 className="text-5xl font-bold text-gray-600">Packages available</h1>
+                        <h1 className="text-5xl font-bold text-gray-600">Our Packages</h1>
                         <p className="mt-2 text-lg text-gray-600">
                             Browse our collection of packages.
                         </p>
@@ -83,7 +83,7 @@ export default function Packages({ items }: Props) {
                                         </div>
                                         {item.coverage && (
                                             <p className="text-sm text-muted-foreground">
-                                                Coverage: {item.coverage}
+                                                Dimensions: {item.coverage}
                                             </p>
                                         )}
                                     </CardHeader>

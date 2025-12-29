@@ -8,9 +8,9 @@ const HeroContact = () => {
                             <h1 className="text-5xl font-bold">
                                 <span className="text-gray-600">Get in touch</span>
                             </h1>
-                            <div className="md:hidden">
+                            {/* <div className="md:hidden">
                                 <img src="/img/displays/PhotoRoom_20231123_153629.png" alt="" />
-                            </div>
+                            </div> */}
                             <p className="prose text-xl leading-relaxed md:mt-4 text-gray-600">
                                 Thank you for your interest in <span className="font-semibold">Funtime Softplay</span>. We're here to assist you with any questions you may have.
                             </p>

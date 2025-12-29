@@ -18,7 +18,7 @@ export default function Contact() {
                     rel="stylesheet"
                 />
             </Head>
-            <div className="flex flex-col min-h-screen  bg-amber-50">
+            <div className="flex flex-col min-h-screen">
                 <Header />
                 <HeroContact />
                 <div className="max-w-7xl mx-auto bg-white">
@@ -95,12 +95,30 @@ export default function Contact() {
                                 <li>
                                     email: hello@funtimesoftplay.co.uk
                                 </li>
-                                <li>
-                                    Social media:
-                                    <div className="mt-2">
-                                        <a href="https://www.instagram.com/love_balloons_bedfordshire_/?hl=en" target="_blank" rel="noopener noreferrer">
-                                            <img src="/storage/img/social/Instagram_Glyph_Black.png" className="w-8 h-8 inline-block mt-4" alt="Instagram" />
-                                        </a>
+                                <li className="bg-gray-100 p-4 rounded-lg">
+                                    <h2 className="font-semibold">Social media</h2>
+                                    <div className="flex flex-col items-start mt-2">
+                                        <div className='flex flex-row items-center font-semibold'>
+                                            <h3 className='pt-3 mr-2 md:text-sm'>Funtime Softplay</h3>
+                                            <div>
+                                                <a href=" https://www.instagram.com/funtimesoftplay/?igsh=dXBwaGtybm1pcWli#" target="_blank" rel="noopener noreferrer">
+                                                    <img src="/storage/img/social/Instagram_Glyph_Black.png" className="w-8 h-8 inline-block mt-4" alt="Instagram" />
+                                                </a> 
+                                            </div>
+                                           
+                                        </div>
+                                         
+                                         <div className='flex flex-row items-center font-semibold'>
+                                            <h3 className='pt-3 mr-2 md:text-sm'>Love Balloons Beds</h3>
+                                            <div>
+                                                <a href="https://www.instagram.com/love_balloons_bedfordshire_/?hl=en" target="_blank" rel="noopener noreferrer">
+                                                    <img src="/storage/img/social/Instagram_Glyph_Black.png" className="w-8 h-8 inline-block mt-4" alt="Instagram" />
+                                                </a>
+                                            </div>
+                                            
+                                         </div>
+                                        
+                                       
                                     </div>
                                 </li>
                             </ul>

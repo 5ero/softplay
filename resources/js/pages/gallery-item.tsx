@@ -130,7 +130,7 @@ export default function GalleryItemView({ item }: Props) {
                                 <Card>
                                     <CardContent className="p-4">
                                         <p className="text-sm font-medium text-gray-500">
-                                            Coverage Area
+                                            Dimensions
                                         </p>
                                         <p className="text-lg font-semibold">{item.coverage}</p>
                                     </CardContent>

@@ -15,9 +15,13 @@ const Footer = () => {
                     </div>
                     <div>
                         <h2 className="hidden md:block text-slate-100 text-lg font-semibold">Social Media</h2>
+                         <a href="https://www.instagram.com/funtimesoftplay/?igsh=dXBwaGtybm1pcWli#" target="_blank" className="mr-2" rel="noopener noreferrer">
+                            <img src="/storage/img/social/Instagram_Glyph_White.png" className="w-8 h-8 inline-block mt-4" alt="Instagram" />
+                        </a>
                         <a href="https://www.instagram.com/love_balloons_bedfordshire_/?hl=en" target="_blank" rel="noopener noreferrer">
                             <img src="/storage/img/social/Instagram_Glyph_White.png" className="w-8 h-8 inline-block mt-4" alt="Instagram" />
                         </a>
+                        
                     </div>
                 </div>
             </div>
