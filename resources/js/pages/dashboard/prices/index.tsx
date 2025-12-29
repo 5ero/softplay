@@ -102,6 +102,12 @@ export default function PricesIndex({ items, categories, filters }: PricesIndexP
         );
     };
 
+    const toggleStatus = (itemId: number) => {
+        router.patch(`/dashboard/prices/${itemId}/toggle-status`, {}, {
+            preserveScroll: true,
+        });
+    };
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Manage Prices" />
@@ -120,7 +126,7 @@ export default function PricesIndex({ items, categories, filters }: PricesIndexP
                             <div>
                                 <CardTitle>Price List</CardTitle>
                                 <CardDescription>
-                                    Click edit to update an item's price
+                                    Click edit to update prices, or click status to toggle active/inactive
                                 </CardDescription>
                             </div>
                             <Select value={selectedCategory} onValueChange={handleCategoryChange}>
@@ -164,11 +170,17 @@ export default function PricesIndex({ items, categories, filters }: PricesIndexP
                                                 <Badge variant="secondary">{item.category.name}</Badge>
                                             </TableCell>
                                             <TableCell>
-                                                {item.is_active ? (
-                                                    <Badge variant="default">Active</Badge>
-                                                ) : (
-                                                    <Badge variant="outline">Inactive</Badge>
-                                                )}
+                                                <button
+                                                    onClick={() => toggleStatus(item.id)}
+                                                    className="cursor-pointer transition-opacity hover:opacity-70"
+                                                    title="Click to toggle status"
+                                                >
+                                                    {item.is_active ? (
+                                                        <Badge variant="default">Active</Badge>
+                                                    ) : (
+                                                        <Badge variant="outline">Inactive</Badge>
+                                                    )}
+                                                </button>
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 {editingId === item.id ? (

@@ -97,6 +97,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('about', [\App\Http\Controllers\AboutContentController::class, 'update'])->name('about.update');
         Route::get('prices', [\App\Http\Controllers\Dashboard\PriceController::class, 'index'])->name('prices.index');
         Route::patch('prices/{item}', [\App\Http\Controllers\Dashboard\PriceController::class, 'update'])->name('prices.update');
+        Route::patch('prices/{item}/toggle-status', [\App\Http\Controllers\Dashboard\PriceController::class, 'toggleStatus'])->name('prices.toggle-status');
     });
 });
 

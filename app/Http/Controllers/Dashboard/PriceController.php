@@ -40,4 +40,13 @@ class PriceController extends Controller
 
         return back()->with('success', 'Price updated successfully');
     }
+
+    public function toggleStatus(GalleryItem $item)
+    {
+        $item->update([
+            'is_active' => ! $item->is_active,
+        ]);
+
+        return back()->with('success', 'Status updated successfully');
+    }
 }
