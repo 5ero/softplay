@@ -33,9 +33,14 @@ export default function Contact() {
                                         {flash.success}
                                     </div>
                                 )}
-                                <Form {...contactStore()}>
-                                    {({ errors, processing, wasSuccessful: _wasSuccessful }) => (
+                                <Form {...contactStore.form()} resetOnSuccess>
+                                    {({ errors, processing, wasSuccessful, recentlySuccessful }) => (
                                         <>
+                                            {recentlySuccessful && (
+                                                <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+                                                    Thank you for your message! We will get back to you soon.
+                                                </div>
+                                            )}
                                             <div className="mb-4">
                                                 <label htmlFor="name" className="block text-slate-600 mb-2">Name</label>
                                                 <input 

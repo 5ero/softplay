@@ -17,7 +17,7 @@ class ContactController extends Controller
                 name: $validated['name'],
                 email: $validated['email'],
                 phone: $validated['phone'],
-                message: $validated['message'],
+                messageContent: $validated['message'],
             ));
 
         return back()->with('success', 'Thank you for your message! We will get back to you soon.');

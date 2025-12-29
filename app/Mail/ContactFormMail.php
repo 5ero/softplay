@@ -20,7 +20,7 @@ class ContactFormMail extends Mailable
         public string $name,
         public string $email,
         public string $phone,
-        public string $message,
+        public string $messageContent,
     ) {}
 
     /**
@@ -41,6 +41,12 @@ class ContactFormMail extends Mailable
     {
         return new Content(
             view: 'emails.contact-form',
+            with: [
+                'name' => $this->name,
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'messageContent' => $this->messageContent,
+            ],
         );
     }
 
