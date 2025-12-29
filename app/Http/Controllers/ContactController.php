@@ -12,8 +12,8 @@ class ContactController extends Controller
     {
         $validated = $request->validated();
 
-        Mail::to(config('mail.to_address', $validated['email']))
-            ->queue(new ContactFormMail(
+        Mail::to(config('mail.to_address', config('mail.from.address')))
+            ->send(new ContactFormMail(
                 name: $validated['name'],
                 email: $validated['email'],
                 phone: $validated['phone'],
