@@ -13,7 +13,7 @@ class ContactController extends Controller
         $validated = $request->validated();
 
         Mail::to(config('mail.from.address'))
-            ->send(new ContactFormMail(
+            ->queue(new ContactFormMail(
                 name: $validated['name'],
                 email: $validated['email'],
                 phone: $validated['phone'],
