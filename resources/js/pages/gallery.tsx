@@ -83,7 +83,7 @@ export default function Gallery({ items }: Props) {
                                         </div>
                                         {item.coverage && (
                                             <p className="text-sm text-muted-foreground">
-                                                Coverage: {item.coverage}
+                                                Dimensions: {item.coverage}
                                             </p>
                                         )}
                                     </CardHeader>
