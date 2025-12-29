@@ -14,6 +14,16 @@ class ContactFormMail extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     /**
+     * The number of times the job may be attempted.
+     */
+    public int $tries = 3;
+
+    /**
+     * The number of seconds to wait before retrying the job.
+     */
+    public int $backoff = 10;
+
+    /**
      * Create a new message instance.
      */
     public function __construct(

@@ -115,4 +115,15 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Global "To" Address
+    |--------------------------------------------------------------------------
+    |
+    | The email address where contact form submissions will be sent.
+    |
+    */
+
+    'to_address' => env('MAIL_TO_ADDRESS', env('MAIL_FROM_ADDRESS', 'hello@example.com')),
+
 ];
