@@ -9,7 +9,7 @@ const Hero = () => {
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-600 mb-4">
                           Next level parties start with our unique luxury soft play
                         </h1>
-                        <div className="md:hidden">
+                        <div className="mb-4 md:mb-0 md:hidden">
                             <img src="/storage/img/home/softplay-main-image.jpg" alt="" />
                         </div>
                         <div className="prose  leading-relaxed md:mt-4 text-gray-600">
