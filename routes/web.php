@@ -34,6 +34,7 @@ Route::get('/gallery/{id}', [\App\Http\Controllers\GalleryItemController::class,
 Route::get('/prices', function () {
     $items = GalleryItem::with('category')
         ->where('is_active', true)
+        ->where('is_package', false)
         ->orderBy('sort_order')
         ->get();
 
