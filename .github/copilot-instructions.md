@@ -414,6 +414,10 @@ export default () => (
     </code-snippet>
 
 
+### Dark Mode
+- If existing pages and components support dark mode, new pages and components must support dark mode in a similar way, typically using `dark:`.
+
+
 === tailwindcss/v4 rules ===
 
 ## Tailwind 4
