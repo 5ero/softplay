@@ -3,22 +3,6 @@ import Header from '@/components/app/header';
 import Hero from '@/components/app/hero';
 import { Head } from '@inertiajs/react';
 
-interface IconData {
-    src: string;
-    label: string;
-}
-
-interface SetItem {
-    id: number;
-    title: string;
-    description: string;
-    coverage?: string;
-    price: string;
-    images: string[];
-    icons: IconData[];
-    sort_order: number;
-}
-
 export default function Welcome() {
     return (
         <>
