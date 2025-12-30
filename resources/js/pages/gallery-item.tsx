@@ -185,7 +185,7 @@ export default function GalleryItemView({ item }: Props) {
                             )}
 
                             {/* Contact CTA */}
-                            <Card className="bg-orange-50 border-orange-200">
+                            <Card className="bg-blue-50 border-blue-200">
                                 <CardContent className="p-6">
                                     <h3 className="mb-2 text-lg font-semibold">
                                         Interested in this item?
