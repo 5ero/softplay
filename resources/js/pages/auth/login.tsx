@@ -19,7 +19,6 @@ interface LoginProps {
 export default function Login({
     status,
     canResetPassword,
-    canRegister: _canRegister,
 }: LoginProps) {
     return (
         <AuthLayout

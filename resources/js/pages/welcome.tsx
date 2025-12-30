@@ -1,7 +1,6 @@
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
 import Hero from '@/components/app/hero';
-import Sets from '@/components/app/sets';
 import { Head } from '@inertiajs/react';
 
 interface IconData {
@@ -20,7 +19,7 @@ interface SetItem {
     sort_order: number;
 }
 
-export default function Welcome({ sets }: { sets: SetItem[] }) {
+export default function Welcome() {
     return (
         <>
             <Head title="Welcome">
