@@ -29,7 +29,7 @@ Route::get('/contact', function () {
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/gallery', [\App\Http\Controllers\GalleryItemController::class, 'publicIndex'])->name('gallery');
-Route::get('/gallery/{id}', [\App\Http\Controllers\GalleryItemController::class, 'publicShow'])->name('gallery.show');
+Route::get('/gallery/{galleryItem:slug}', [\App\Http\Controllers\GalleryItemController::class, 'publicShow'])->name('gallery.show');
 
 Route::get('/prices', function () {
     $items = GalleryItem::with('category')
@@ -93,12 +93,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // dashboard resource routes for category and gallery management
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::resource('categories', \App\Http\Controllers\CategoryController::class);
-        Route::resource('gallery', \App\Http\Controllers\GalleryItemController::class);
+        Route::resource('gallery', \App\Http\Controllers\GalleryItemController::class)->parameters(['gallery' => 'gallery:id']);
         Route::get('about', [\App\Http\Controllers\AboutContentController::class, 'edit'])->name('about.edit');
         Route::put('about', [\App\Http\Controllers\AboutContentController::class, 'update'])->name('about.update');
         Route::get('prices', [\App\Http\Controllers\Dashboard\PriceController::class, 'index'])->name('prices.index');
-        Route::patch('prices/{item}', [\App\Http\Controllers\Dashboard\PriceController::class, 'update'])->name('prices.update');
-        Route::patch('prices/{item}/toggle-status', [\App\Http\Controllers\Dashboard\PriceController::class, 'toggleStatus'])->name('prices.toggle-status');
+        Route::patch('prices/{item:id}', [\App\Http\Controllers\Dashboard\PriceController::class, 'update'])->name('prices.update');
+        Route::patch('prices/{item:id}/toggle-status', [\App\Http\Controllers\Dashboard\PriceController::class, 'toggleStatus'])->name('prices.toggle-status');
     });
 });
 

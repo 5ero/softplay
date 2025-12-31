@@ -5,7 +5,7 @@ import { dashboard, login } from '@/routes';
 import { type SharedData } from '@/types';
 import { House, Images, List, Mail, PersonStanding, Pyramid } from 'lucide-react';
 
-const Header = () => {
+const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
     const { auth } = usePage<SharedData>().props;
     const [showMobileNav, setShowMobileNav] = React.useState(false);
 
@@ -16,12 +16,12 @@ const Header = () => {
                     <img src="/storage/img/logo/funtime-softplay-logo-trans.png" alt="" className="w-32 md:w-44" />
                 </div>
                 <div className="hidden md:flex flex-row items-center justify-end w-full">
-                    <NavItem title="Home" href="/" />
-                    <NavItem title="Gallery" href="/gallery" />
-                    <NavItem title="Prices" href="/prices" />
-                    <NavItem title="Packages" href="/packages" />
-                    <NavItem title="About us" href="/about" />
-                    <NavItem title="Contact us" href="/contact" />
+                    <NavItem title="Home" href="/" activeOverride={activeOverride} />
+                    <NavItem title="Gallery" href="/gallery" activeOverride={activeOverride} />
+                    <NavItem title="Prices" href="/prices" activeOverride={activeOverride} />
+                    <NavItem title="Packages" href="/packages" activeOverride={activeOverride} />
+                    <NavItem title="About us" href="/about" activeOverride={activeOverride} />
+                    <NavItem title="Contact us" href="/contact" activeOverride={activeOverride} />
                     {auth.user ? (
                         <NavItem
                             title="Dashboard"
@@ -55,27 +55,27 @@ const Header = () => {
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 shadow'>
                             <div className='bg-white rounded-full p-2'><House /></div>
-                            <NavItem title="Home" href="/" />
+                            <NavItem title="Home" href="/" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Images /></div>
-                            <NavItem title="Gallery" href="/gallery" />
+                            <NavItem title="Gallery" href="/gallery" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><List /></div>
-                            <NavItem title="Prices" href="/prices" />
+                            <NavItem title="Prices" href="/prices" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Pyramid /></div>
-                            <NavItem title="Packages" href="/packages" />
+                            <NavItem title="Packages" href="/packages" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><PersonStanding /></div>
-                            <NavItem title="About us" href="/about" />
+                            <NavItem title="About us" href="/about" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Mail /></div>
-                            <NavItem title="Contact" href="/contact" />
+                            <NavItem title="Contact" href="/contact" activeOverride={activeOverride} />
                         </div>
                     </div>
                 </div>

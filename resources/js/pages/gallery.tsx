@@ -13,6 +13,7 @@ interface Category {
 interface GalleryItem {
     id: number;
     title: string;
+    slug: string;
     description: string;
     coverage?: string;
     price: string;
@@ -61,7 +62,7 @@ export default function Gallery({ items }: Props) {
                             const displayImage = item.main_image || item.images[0];
                             
                             return (
-                            <Link key={item.id} href={`/gallery/${item.id}`}>
+                            <Link key={item.id} href={`/gallery/${item.slug}`}>
                                 <Card className="overflow-hidden transition-shadow hover:shadow-lg cursor-pointer">
                                     <div className="aspect-square overflow-hidden bg-gray-100">
                                         {displayImage ? (

@@ -1,8 +1,9 @@
 import { Link, usePage } from '@inertiajs/react';
 
-const NavItem = ({ title, href, method = 'get' }: { title: string; href: string; method?: 'get' | 'post' | 'put' | 'patch' | 'delete' }) => {
+const NavItem = ({ title, href, method = 'get', activeOverride }: { title: string; href: string; method?: 'get' | 'post' | 'put' | 'patch' | 'delete'; activeOverride?: string }) => {
     const { url } = usePage();
-    const isActive = url === href || url.startsWith(href + '/');
+    const checkUrl = activeOverride || url;
+    const isActive = checkUrl === href || checkUrl.startsWith(href + '/');
 
     return (
         <div className="md:mx-4">

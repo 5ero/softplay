@@ -14,6 +14,7 @@ class GalleryItem extends Model
     protected $fillable = [
         'category_id',
         'title',
+        'slug',
         'description',
         'coverage',
         'price',
@@ -42,5 +43,13 @@ class GalleryItem extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }

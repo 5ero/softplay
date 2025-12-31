@@ -61,17 +61,19 @@ class GalleryItemController extends Controller
     /**
      * Display a single item for the public gallery page.
      */
-    public function publicShow($id)
+    public function publicShow(GalleryItem $galleryItem)
     {
-        $item = GalleryItem::with('category')
-            ->where('is_active', true)
-            ->findOrFail($id);
+        if (! $galleryItem->is_active) {
+            abort(404);
+        }
+
+        $galleryItem->load('category');
 
         // Increment view count
-        $item->increment('view_count');
+        $galleryItem->increment('view_count');
 
         return Inertia::render('gallery-item', [
-            'item' => $item,
+            'item' => $galleryItem,
         ]);
     }
 

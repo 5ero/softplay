@@ -22,6 +22,7 @@ interface Category {
 interface GalleryItem {
     id: number;
     title: string;
+    slug: string;
     description: string;
     coverage?: string;
     price: string;
@@ -30,6 +31,7 @@ interface GalleryItem {
     videos?: string[];
     icons?: IconData[];
     category: Category;
+    is_package: boolean;
 }
 
 interface Props {
@@ -55,15 +57,17 @@ export default function GalleryItemView({ item }: Props) {
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
                     rel="stylesheet"
                 />
+                <meta name="description" content={item.description.replace(/<[^>]+>/g, '').slice(0, 160)} />   
+                <link rel="canonical" href={`https://funtimesoftplay.co.uk/gallery/${item.slug}`} />
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
-                <Header />
+                <Header activeOverride={item.is_package ? '/packages' : '/gallery'} />
                 <div className="container mx-auto px-4 py-12 md:mt-28">
                     {/* Back Button */}
-                    <Link href="/gallery">
+                    <Link href={item.is_package ? '/packages' : '/gallery'}>
                         <Button variant="ghost" className="mb-6">
                             <ArrowLeft className="mr-2 h-4 w-4" />
-                            Back to Gallery
+                            Back to {item.is_package ? 'Packages' : 'Gallery'}
                         </Button>
                     </Link>
 

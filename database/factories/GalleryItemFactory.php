@@ -17,9 +17,12 @@ class GalleryItemFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->words(3, true);
+
         return [
             'category_id' => Category::factory(),
-            'title' => fake()->words(3, true),
+            'title' => $title,
+            'slug' => \Illuminate\Support\Str::slug($title).'-'.fake()->unique()->numberBetween(1, 9999),
             'description' => fake()->paragraphs(3, true),
             'price' => fake()->randomFloat(2, 50, 500),
             'images' => [],
