@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('landing_pages', function (Blueprint $table) {
-            //
+            $table->json('package_ids')->nullable()->after('gallery_item_ids');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('landing_pages', function (Blueprint $table) {
-            //
+            $table->dropColumn('package_ids');
         });
     }
 };
