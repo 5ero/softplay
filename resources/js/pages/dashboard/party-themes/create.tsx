@@ -22,7 +22,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/dashboard',
     },
     {
-        title: 'Party Themes',
+        title: 'Event Decor',
         href: '/dashboard/party-themes',
     },
     {
@@ -57,15 +57,15 @@ export default function CreatePartyTheme() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Create Party Theme" />
+            <Head title="Create Event Decor" />
 
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div>
                     <h1 className="text-2xl font-semibold">
-                        Create Party Theme
+                        Create Event Decor
                     </h1>
                     <p className="text-sm text-muted-foreground">
-                        Add a new party theme with images and description
+                        Add new event decor with images and description
                     </p>
                 </div>
 
@@ -73,7 +73,7 @@ export default function CreatePartyTheme() {
                     <CardHeader>
                         <CardTitle>Theme Details</CardTitle>
                         <CardDescription>
-                            Enter the information for the new party theme
+                            Enter the information for the new event decor
                         </CardDescription>
                     </CardHeader>
                     <CardContent>

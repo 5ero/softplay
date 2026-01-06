@@ -25,12 +25,12 @@ export default function PartyTheme({ theme }: { theme: PartyTheme }) {
                 />
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
-                <Header activeOverride="/party-themes" />
+                <Header activeOverride="/event-decor" />
                 <div className="container mx-auto px-4 py-12 md:mt-28">
-                    <Link href="/party-themes">
+                    <Link href="/event-decor">
                         <Button variant="ghost" className="mb-6">
                             <ArrowLeft className="mr-2 h-4 w-4" />
-                            Back to Party Themes
+                            Back to Event Decor
                         </Button>
                     </Link>
 

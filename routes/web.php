@@ -62,7 +62,7 @@ Route::get('/packages', function () {
     ]);
 })->name('packages');
 
-Route::get('/party-themes', function () {
+Route::get('/event-decor', function () {
     $themes = \App\Models\PartyTheme::where('is_active', true)
         ->orderBy('sort_order')
         ->get();
@@ -70,9 +70,9 @@ Route::get('/party-themes', function () {
     return Inertia::render('party-themes', [
         'items' => $themes,
     ]);
-})->name('party-themes');
+})->name('event-decor');
 
-Route::get('/party-themes/{partyTheme:slug}', function (\App\Models\PartyTheme $partyTheme) {
+Route::get('/event-decor/{partyTheme:slug}', function (\App\Models\PartyTheme $partyTheme) {
     if (!$partyTheme->is_active) {
         abort(404);
     }
@@ -80,7 +80,7 @@ Route::get('/party-themes/{partyTheme:slug}', function (\App\Models\PartyTheme $
     return Inertia::render('party-theme', [
         'theme' => $partyTheme,
     ]);
-})->name('party-themes.show');
+})->name('event-decor.show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {

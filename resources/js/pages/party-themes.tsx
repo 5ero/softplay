@@ -20,7 +20,7 @@ export default function PartyThemes({ items }: Props) {
 
     return (
         <>
-            <Head title="Party Themes">
+            <Head title="Event Decor">
                 <link rel="preconnect" href="https://fonts.bunny.net" />
                 <link
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
@@ -28,12 +28,12 @@ export default function PartyThemes({ items }: Props) {
                 />
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
-                <Header activeOverride="/party-themes" />
+                <Header activeOverride="/event-decor" />
                 <div className="container mx-auto px-4 py-12 md:mt-28">
                     <div className="mb-8">
-                        <h1 className="text-5xl font-bold text-gray-600">Party Themes</h1>
+                        <h1 className="text-5xl font-bold text-gray-600">Event Decor</h1>
                         <p className="mt-2 text-lg text-gray-600">
-                            Make your party extra special with our themed decorations and accessories.
+                            Make your event extra special with our themed decorations and accessories.
                         </p>
                     </div>
 
@@ -52,7 +52,7 @@ export default function PartyThemes({ items }: Props) {
                             const displayImage = item.main_image || item.images[0];
                             
                             return (
-                            <Link key={item.id} href={`/party-themes/${item.slug}`}>
+                            <Link key={item.id} href={`/event-decor/${item.slug}`}>
                                 <Card className="overflow-hidden transition-shadow hover:shadow-lg cursor-pointer">
                                     <div className="aspect-square overflow-hidden bg-gray-100">
                                         {displayImage ? (
@@ -94,7 +94,7 @@ export default function PartyThemes({ items }: Props) {
                 ) : (
                     <Card className="p-8 text-center">
                         <p className="text-gray-600">
-                            No party themes available at the moment. Check back soon!
+                            No event decor available at the moment. Check back soon!
                         </p>
                     </Card>
                 )}

@@ -38,7 +38,7 @@ const mainNavItems: NavItem[] = [
         icon: Images,
     },
     {
-        title: 'Party Themes',
+        title: 'Event Decor',
         href: '/dashboard/party-themes',
         icon: PartyPopper,
     },

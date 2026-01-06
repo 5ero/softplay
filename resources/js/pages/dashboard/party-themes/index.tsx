@@ -17,7 +17,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/dashboard',
     },
     {
-        title: 'Party Themes',
+        title: 'Event Decor',
         href: '/dashboard/party-themes',
     },
 ];
@@ -51,14 +51,14 @@ export default function PartyThemesIndex({ themes }: PartyThemesIndexProps) {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Party Themes" />
+            <Head title="Event Decor" />
 
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h1 className="text-2xl font-semibold">Party Themes</h1>
+                        <h1 className="text-2xl font-semibold">Event Decor</h1>
                         <p className="text-sm text-muted-foreground">
-                            Manage party theme images and descriptions
+                            Manage event decor images and descriptions
                         </p>
                     </div>
                     <Link href="/dashboard/party-themes/create">
@@ -136,7 +136,7 @@ export default function PartyThemesIndex({ themes }: PartyThemesIndexProps) {
                     <Card>
                         <CardContent className="flex flex-col items-center justify-center py-12">
                             <p className="text-muted-foreground">
-                                No party themes yet
+                                No event decor yet
                             </p>
                             <Link
                                 href="/dashboard/party-themes/create"

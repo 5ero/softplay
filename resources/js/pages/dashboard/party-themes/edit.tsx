@@ -12,7 +12,7 @@ import * as React from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     { title: 'Dashboard', href: '/dashboard' },
-    { title: 'Party Themes', href: '/dashboard/party-themes' },
+    { title: 'Event Decor', href: '/dashboard/party-themes' },
     { title: 'Edit', href: '#' },
 ];
 
@@ -56,14 +56,14 @@ export default function EditPartyTheme({ theme }: { theme: PartyTheme }) {
 
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div>
-                    <h1 className="text-2xl font-semibold">Edit Party Theme</h1>
+                    <h1 className="text-2xl font-semibold">Edit Event Decor</h1>
                     <p className="text-sm text-muted-foreground">Update theme information</p>
                 </div>
 
                 <Card className="max-w-2xl">
                     <CardHeader>
                         <CardTitle>Theme Details</CardTitle>
-                        <CardDescription>Update the party theme information</CardDescription>
+                        <CardDescription>Update the event decor information</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <Form
