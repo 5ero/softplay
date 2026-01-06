@@ -20,8 +20,6 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/about', [\App\Http\Controllers\AboutContentController::class, 'show'])->name('about');
-
 Route::get('/contact', function () {
     return Inertia::render('contact');
 })->name('contact');
@@ -64,6 +62,26 @@ Route::get('/packages', function () {
     ]);
 })->name('packages');
 
+Route::get('/party-themes', function () {
+    $themes = \App\Models\PartyTheme::where('is_active', true)
+        ->orderBy('sort_order')
+        ->get();
+
+    return Inertia::render('party-themes', [
+        'items' => $themes,
+    ]);
+})->name('party-themes');
+
+Route::get('/party-themes/{partyTheme:slug}', function (\App\Models\PartyTheme $partyTheme) {
+    if (!$partyTheme->is_active) {
+        abort(404);
+    }
+
+    return Inertia::render('party-theme', [
+        'theme' => $partyTheme,
+    ]);
+})->name('party-themes.show');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         $stats = [
@@ -94,8 +112,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::resource('categories', \App\Http\Controllers\CategoryController::class);
         Route::resource('gallery', \App\Http\Controllers\GalleryItemController::class)->parameters(['gallery' => 'gallery:id']);
-        Route::get('about', [\App\Http\Controllers\AboutContentController::class, 'edit'])->name('about.edit');
-        Route::put('about', [\App\Http\Controllers\AboutContentController::class, 'update'])->name('about.update');
+        Route::resource('party-themes', \App\Http\Controllers\Dashboard\PartyThemeController::class)->parameters(['party-themes' => 'party_theme:id']);
         Route::get('prices', [\App\Http\Controllers\Dashboard\PriceController::class, 'index'])->name('prices.index');
         Route::patch('prices/{item:id}', [\App\Http\Controllers\Dashboard\PriceController::class, 'update'])->name('prices.update');
         Route::patch('prices/{item:id}/toggle-status', [\App\Http\Controllers\Dashboard\PriceController::class, 'toggleStatus'])->name('prices.toggle-status');

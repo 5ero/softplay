@@ -34,7 +34,11 @@ export function RichTextEditor({ content, onChange, name }: RichTextEditorProps)
                     levels: [1, 2, 3],
                 },
             }),
-            Underline,
+            Underline.configure({
+                HTMLAttributes: {
+                    class: 'underline',
+                },
+            }),
             TextAlign.configure({
                 types: ['heading', 'paragraph'],
             }),

@@ -20,7 +20,7 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                     <NavItem title="Gallery" href="/gallery" activeOverride={activeOverride} />
                     <NavItem title="Prices" href="/prices" activeOverride={activeOverride} />
                     <NavItem title="Packages" href="/packages" activeOverride={activeOverride} />
-                    <NavItem title="About us" href="/about" activeOverride={activeOverride} />
+                    <NavItem title="Party Themes" href="/party-themes" activeOverride={activeOverride} />
                     <NavItem title="Contact us" href="/contact" activeOverride={activeOverride} />
                     {auth.user ? (
                         <NavItem
@@ -70,8 +70,8 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                             <NavItem title="Packages" href="/packages" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
-                            <div className='bg-white rounded-full p-2'><PersonStanding /></div>
-                            <NavItem title="About us" href="/about" activeOverride={activeOverride} />
+                            <div className='bg-white rounded-full p-2'><Pyramid /></div>
+                            <NavItem title="Party Themes" href="/party-themes" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Mail /></div>
