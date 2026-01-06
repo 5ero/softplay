@@ -113,6 +113,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('categories', \App\Http\Controllers\CategoryController::class);
         Route::resource('gallery', \App\Http\Controllers\GalleryItemController::class)->parameters(['gallery' => 'gallery:id']);
         Route::resource('party-themes', \App\Http\Controllers\Dashboard\PartyThemeController::class)->parameters(['party-themes' => 'party_theme:id']);
+        Route::resource('locations', \App\Http\Controllers\Dashboard\LocationController::class);
+        Route::resource('landing-pages', \App\Http\Controllers\Dashboard\LandingPageController::class)->parameters(['landing-pages' => 'landing_page:id']);
         Route::get('prices', [\App\Http\Controllers\Dashboard\PriceController::class, 'index'])->name('prices.index');
         Route::patch('prices/{item:id}', [\App\Http\Controllers\Dashboard\PriceController::class, 'update'])->name('prices.update');
         Route::patch('prices/{item:id}/toggle-status', [\App\Http\Controllers\Dashboard\PriceController::class, 'toggleStatus'])->name('prices.toggle-status');
@@ -120,3 +122,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__.'/settings.php';
+
+// Landing page catch-all route - MUST be last!
+Route::get('/{landingPage:slug}', function (\App\Models\LandingPage $landingPage) {
+    if (!$landingPage->is_active) {
+        abort(404);
+    }
+
+    $landingPage->load('location');
+    $galleryItems = $landingPage->galleryItems();
+
+    return Inertia::render('landing-page', [
+        'page' => $landingPage,
+        'galleryItems' => $galleryItems,
+    ]);
+})->name('landing-page.show');

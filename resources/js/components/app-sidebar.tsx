@@ -13,7 +13,7 @@ import {
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Tag, Images, ExternalLink, FileText, PoundSterling, PartyPopper } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, Tag, Images, ExternalLink, FileText, PoundSterling, PartyPopper, MapPin, FileType } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -41,6 +41,16 @@ const mainNavItems: NavItem[] = [
         title: 'Event Decor',
         href: '/dashboard/party-themes',
         icon: PartyPopper,
+    },
+    {
+        title: 'Locations',
+        href: '/dashboard/locations',
+        icon: MapPin,
+    },
+    {
+        title: 'Landing Pages',
+        href: '/dashboard/landing-pages',
+        icon: FileType,
     },
     {
         title: 'Prices',
