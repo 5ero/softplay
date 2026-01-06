@@ -1,10 +1,20 @@
+import { Link } from '@inertiajs/react';
+
 const Footer = () => {
     return (
         <footer className="bg-slate-800 p-8 mt-auto">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-4 gap-4">
                     <div>
                         <img src="/storage/img/logo/funtime-softplay-logo-trans.png" className="w-44" alt="Funtime Softplay Logo" />
+                    </div>
+                    <div>
+                        <h2 className="hidden md:block text-slate-100 text-lg font-semibold">Quick Links</h2>
+                        <ul className="text-slate-300 space-y-1 text-sm mt-2">
+                            <li><Link href="/areas-covered" className="hover:text-slate-100">Areas Covered</Link></li>
+                            <li><Link href="/gallery" className="hover:text-slate-100">Gallery</Link></li>
+                            <li><Link href="/contact" className="hover:text-slate-100">Contact Us</Link></li>
+                        </ul>
                     </div>
                     <div>
                         <h2 className="hidden md:block text-slate-100 text-lg font-semibold">Contact information</h2>

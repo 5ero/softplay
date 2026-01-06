@@ -59,6 +59,7 @@ class LandingPage extends Model
         'meta_title',
         'meta_description',
         'gallery_item_ids',
+        'package_ids',
         'sort_order',
         'is_active',
     ];
@@ -67,6 +68,7 @@ class LandingPage extends Model
     {
         return [
             'gallery_item_ids' => 'array',
+            'package_ids' => 'array',
             'is_active' => 'boolean',
         ];
     }
@@ -82,10 +84,31 @@ class LandingPage extends Model
             return collect();
         }
 
-        return GalleryItem::whereIn('id', $this->gallery_item_ids)
+        $items = GalleryItem::whereIn('id', $this->gallery_item_ids)
             ->where('is_active', true)
-            ->orderByRaw('FIELD(id, '.implode(',', $this->gallery_item_ids).')')
             ->get();
+
+        // Sort by the order specified in gallery_item_ids
+        return $items->sortBy(function ($item) {
+            return array_search($item->id, $this->gallery_item_ids);
+        })->values();
+    }
+
+    public function packageItems()
+    {
+        if (empty($this->package_ids)) {
+            return collect();
+        }
+
+        $items = GalleryItem::whereIn('id', $this->package_ids)
+            ->where('is_active', true)
+            ->where('is_package', true)
+            ->get();
+
+        // Sort by the order specified in package_ids
+        return $items->sortBy(function ($item) {
+            return array_search($item->id, $this->package_ids);
+        })->values();
     }
 
     public function getRouteKeyName(): string

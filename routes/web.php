@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SitemapController;
 use App\Models\Category;
 use App\Models\GalleryItem;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,24 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
+Route::get('/areas-covered', function () {
+    $locations = \App\Models\Location::where('is_active', true)
+        ->orderBy('sort_order')
+        ->get();
+    
+    $landingPages = \App\Models\LandingPage::where('is_active', true)
+        ->select('id', 'title', 'slug', 'location_id')
+        ->orderBy('sort_order')
+        ->get();
+
+    return Inertia::render('areas-covered', [
+        'locations' => $locations,
+        'landingPages' => $landingPages,
+    ]);
+})->name('areas-covered');
 
 Route::get('/gallery', [\App\Http\Controllers\GalleryItemController::class, 'publicIndex'])->name('gallery');
 Route::get('/gallery/{galleryItem:slug}', [\App\Http\Controllers\GalleryItemController::class, 'publicShow'])->name('gallery.show');
@@ -131,9 +150,11 @@ Route::get('/{landingPage:slug}', function (\App\Models\LandingPage $landingPage
 
     $landingPage->load('location');
     $galleryItems = $landingPage->galleryItems();
+    $packages = $landingPage->packageItems();
 
     return Inertia::render('landing-page', [
         'page' => $landingPage,
         'galleryItems' => $galleryItems,
+        'packages' => $packages,
     ]);
 })->name('landing-page.show');

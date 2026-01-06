@@ -24,11 +24,19 @@ class LandingPageController extends Controller
     public function create()
     {
         $locations = Location::where('is_active', true)->orderBy('sort_order')->get();
-        $galleryItems = GalleryItem::where('is_active', true)->orderBy('sort_order')->get();
+        $galleryItems = GalleryItem::where('is_active', true)
+            ->where('is_package', false)
+            ->orderBy('sort_order')
+            ->get();
+        $packages = GalleryItem::where('is_active', true)
+            ->where('is_package', true)
+            ->orderBy('sort_order')
+            ->get();
 
         return Inertia::render('dashboard/landing-pages/create', [
             'locations' => $locations,
             'galleryItems' => $galleryItems,
+            'packages' => $packages,
         ]);
     }
 
@@ -42,6 +50,8 @@ class LandingPageController extends Controller
             'meta_description' => 'nullable|string',
             'gallery_item_ids' => 'nullable|array',
             'gallery_item_ids.*' => 'exists:gallery_items,id',
+            'package_ids' => 'nullable|array',
+            'package_ids.*' => 'exists:gallery_items,id',
             'sort_order' => 'nullable|integer',
         ]);
 
@@ -57,12 +67,20 @@ class LandingPageController extends Controller
     {
         $page = LandingPage::with('location')->findOrFail($id);
         $locations = Location::where('is_active', true)->orderBy('sort_order')->get();
-        $galleryItems = GalleryItem::where('is_active', true)->orderBy('sort_order')->get();
+        $galleryItems = GalleryItem::where('is_active', true)
+            ->where('is_package', false)
+            ->orderBy('sort_order')
+            ->get();
+        $packages = GalleryItem::where('is_active', true)
+            ->where('is_package', true)
+            ->orderBy('sort_order')
+            ->get();
 
         return Inertia::render('dashboard/landing-pages/edit', [
             'page' => $page,
             'locations' => $locations,
             'galleryItems' => $galleryItems,
+            'packages' => $packages,
         ]);
     }
 
@@ -78,6 +96,8 @@ class LandingPageController extends Controller
             'meta_description' => 'nullable|string',
             'gallery_item_ids' => 'nullable|array',
             'gallery_item_ids.*' => 'exists:gallery_items,id',
+            'package_ids' => 'nullable|array',
+            'package_ids.*' => 'exists:gallery_items,id',
             'sort_order' => 'nullable|integer',
         ]);
 

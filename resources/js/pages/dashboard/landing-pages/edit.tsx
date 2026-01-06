@@ -38,12 +38,14 @@ interface LandingPage {
     sort_order: number;
     is_active: boolean;
     gallery_item_ids: number[];
+    package_ids: number[];
 }
 
 interface EditLandingPageProps {
     page: LandingPage;
     locations: Location[];
     galleryItems: GalleryItem[];
+    packages: GalleryItem[];
 }
 
 const getBreadcrumbs = (page: LandingPage): BreadcrumbItem[] => [
@@ -61,13 +63,20 @@ const getBreadcrumbs = (page: LandingPage): BreadcrumbItem[] => [
     },
 ];
 
-export default function EditLandingPage({ page, locations, galleryItems }: EditLandingPageProps) {
+export default function EditLandingPage({ page, locations, galleryItems, packages }: EditLandingPageProps) {
     const breadcrumbs = getBreadcrumbs(page);
     const [content, setContent] = useState(page.content || '');
     const [selectedItems, setSelectedItems] = useState<number[]>(page.gallery_item_ids || []);
+    const [selectedPackages, setSelectedPackages] = useState<number[]>(page.package_ids || []);
 
     const toggleGalleryItem = (id: number) => {
         setSelectedItems((prev) =>
+            prev.includes(id) ? prev.filter((itemId) => itemId !== id) : [...prev, id]
+        );
+    };
+
+    const togglePackage = (id: number) => {
+        setSelectedPackages((prev) =>
             prev.includes(id) ? prev.filter((itemId) => itemId !== id) : [...prev, id]
         );
     };
@@ -205,6 +214,58 @@ export default function EditLandingPage({ page, locations, galleryItems }: EditL
                                             />
                                         ))}
                                         <InputError message={errors.gallery_item_ids} />
+                                    </div>
+
+                                    <div className="grid gap-2">
+                                        <Label>Package Items</Label>
+                                        <div className="grid gap-2 rounded-md border p-4 max-h-96 overflow-y-auto">
+                                            {packages.length === 0 ? (
+                                                <p className="text-sm text-muted-foreground">
+                                                    No packages available
+                                                </p>
+                                            ) : (
+                                                packages.map((pkg) => (
+                                                    <div
+                                                        key={pkg.id}
+                                                        className="flex items-center gap-2"
+                                                    >
+                                                        <input
+                                                            type="checkbox"
+                                                            id={`package_${pkg.id}`}
+                                                            checked={selectedPackages.includes(
+                                                                pkg.id
+                                                            )}
+                                                            onChange={() =>
+                                                                togglePackage(pkg.id)
+                                                            }
+                                                            className="h-4 w-4 rounded border-gray-300"
+                                                        />
+                                                        <Label
+                                                            htmlFor={`package_${pkg.id}`}
+                                                            className="font-normal cursor-pointer flex items-center gap-2"
+                                                        >
+                                                            {pkg.main_image && (
+                                                                <img
+                                                                    src={`/storage/${pkg.main_image}`}
+                                                                    alt={pkg.title}
+                                                                    className="h-10 w-10 rounded object-cover"
+                                                                />
+                                                            )}
+                                                            {pkg.title}
+                                                        </Label>
+                                                    </div>
+                                                ))
+                                            )}
+                                        </div>
+                                        {selectedPackages.map((id) => (
+                                            <input
+                                                key={id}
+                                                type="hidden"
+                                                name="package_ids[]"
+                                                value={id}
+                                            />
+                                        ))}
+                                        <InputError message={errors.package_ids} />
                                     </div>
 
                                     <div className="grid gap-2">
