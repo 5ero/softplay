@@ -1,5 +1,6 @@
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
+import Breadcrumbs from '@/components/app/breadcrumbs';
 import { Head } from '@inertiajs/react';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -47,6 +48,11 @@ export default function LandingPage({ page, galleryItems, packages }: LandingPag
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header />
                 <div className="container mx-auto px-4 py-12 md:mt-28">
+                    <Breadcrumbs items={[
+                        { label: 'Areas Covered', href: '/areas-covered' },
+                        { label: page.location?.name || 'Location', href: '/areas-covered' },
+                        { label: page.title }
+                    ]} />
                     {/* Page Header */}
                     <div className="mb-8">
                         <h1 className="text-5xl font-bold text-gray-600 mb-2">{page.title}</h1>

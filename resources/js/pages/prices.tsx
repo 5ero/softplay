@@ -11,6 +11,7 @@ import {
     DialogTitle,
 } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
+import Breadcrumbs from '@/components/app/breadcrumbs';
 
 interface Category {
     id: number;
@@ -47,7 +48,8 @@ export default function Prices({ items }: Props) {
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header />
-                <div className="container mx-auto px-4 py-12 md:mt-28">
+                <div className="container mx-auto px-4 py-12 md:mt-20">
+                      <Breadcrumbs items={[{ label: 'Prices' }]} />
                     <div className="mb-8">
                         <h1 className="text-4xl font-bold text-gray-600">Our Prices</h1>
                         <p className="mt-2 text-gray-600">

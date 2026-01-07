@@ -1,5 +1,6 @@
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
+import Breadcrumbs from '@/components/app/breadcrumbs';
 import { Head, Link } from '@inertiajs/react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -27,6 +28,10 @@ export default function PartyTheme({ theme }: { theme: PartyTheme }) {
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header activeOverride="/event-decor" />
                 <div className="container mx-auto px-4 py-12 md:mt-28">
+                    <Breadcrumbs items={[
+                        { label: 'Event Decor', href: '/event-decor' },
+                        { label: theme.title }
+                    ]} />
                     <Link href="/event-decor">
                         <Button variant="ghost" className="mb-6">
                             <ArrowLeft className="mr-2 h-4 w-4" />

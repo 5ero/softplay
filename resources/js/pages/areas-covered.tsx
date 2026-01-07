@@ -1,5 +1,6 @@
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
+import Breadcrumbs from '@/components/app/breadcrumbs';
 import { Head, Link } from '@inertiajs/react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MapPin } from 'lucide-react';
@@ -40,6 +41,7 @@ export default function AreasCovered({ locations, landingPages }: AreasCoveredPr
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header />
                 <div className="container mx-auto px-4 py-12 md:mt-28">
+                    <Breadcrumbs items={[{ label: 'Areas Covered' }]} />
                     <div className="mb-8">
                         <h1 className="text-5xl font-bold text-gray-600 mb-4">Areas Covered</h1>
                         <p className="text-xl text-gray-500">

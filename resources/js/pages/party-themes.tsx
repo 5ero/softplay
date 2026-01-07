@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import Breadcrumbs from '@/components/app/breadcrumbs';
 
 interface PartyTheme {
     id: number;
@@ -29,7 +30,8 @@ export default function PartyThemes({ items }: Props) {
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header activeOverride="/event-decor" />
-                <div className="container mx-auto px-4 py-12 md:mt-28">
+                <div className="container mx-auto px-4 py-12 md:mt-20">
+                    <Breadcrumbs items={[{ label: 'Event Decor' }]} />
                     <div className="mb-8">
                         <h1 className="text-5xl font-bold text-gray-600">Event Decor</h1>
                         <p className="mt-2 text-lg text-gray-600">

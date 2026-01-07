@@ -1,5 +1,6 @@
 import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
+import Breadcrumbs from '@/components/app/breadcrumbs';
 import HeroContact from '@/components/app/heroContact';
 import Button from '@/components/app/form/button';
 import { type SharedData } from '@/types';
@@ -18,15 +19,20 @@ export default function Contact() {
                     rel="stylesheet"
                 />
             </Head>
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen bg-blue-50">
                 <Header />
-                <HeroContact />
-                <div className="max-w-7xl mx-auto bg-white">
+                
+                <div className="container mx-auto px-4 py-12 md:mt-20 50">
+                    <Breadcrumbs items={[{ label: 'Contact us' }]} />
+                    <div className="mb-8 ">
+                        <h1 className="text-5xl font-bold text-gray-600">Contact us</h1>
+                        <p className="mt-2 text-lg text-gray-600">
+                            Make your event extra special with our themed decorations and accessories.
+                        </p>
+                    </div>
                     <div className="flex flex-col md:flex-row mt-12">
                         <div className="w-full">
-                            <h1 className="text-slate-600 text-4xl m-8">
-                                Contact us
-                            </h1>
+                         
                             <div className="p-8">
                                 {flash?.success && (
                                     <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
@@ -47,7 +53,7 @@ export default function Contact() {
                                                     type="text" 
                                                     id="name" 
                                                     name="name" 
-                                                    className={`w-full border rounded px-4 py-2 ${errors.name ? 'border-red-500' : 'border-slate-300'}`}
+                                                    className={`w-full bg-white border rounded px-4 py-2 ${errors.name ? 'border-red-500' : 'border-slate-300'}`}
                                                     required
                                                 />
                                                 {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
@@ -58,7 +64,7 @@ export default function Contact() {
                                                     type="email" 
                                                     id="email" 
                                                     name="email" 
-                                                    className={`w-full border rounded px-4 py-2 ${errors.email ? 'border-red-500' : 'border-slate-300'}`}
+                                                    className={`w-full bg-white border rounded px-4 py-2 ${errors.email ? 'border-red-500' : 'border-slate-300'}`}
                                                     required
                                                 />
                                                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
@@ -69,7 +75,7 @@ export default function Contact() {
                                                     type="tel" 
                                                     id="phone" 
                                                     name="phone" 
-                                                    className={`w-full border rounded px-4 py-2 ${errors.phone ? 'border-red-500' : 'border-slate-300'}`}
+                                                    className={`w-full bg-white border rounded px-4 py-2 ${errors.phone ? 'border-red-500' : 'border-slate-300'}`}
                                                     required
                                                 />
                                                 {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
@@ -80,7 +86,7 @@ export default function Contact() {
                                                     id="message" 
                                                     name="message" 
                                                     rows={5} 
-                                                    className={`w-full border rounded px-4 py-2 ${errors.message ? 'border-red-500' : 'border-slate-300'}`}
+                                                    className={`w-full bg-white border rounded px-4 py-2 ${errors.message ? 'border-red-500' : 'border-slate-300'}`}
                                                     required
                                                 />
                                                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
@@ -95,12 +101,12 @@ export default function Contact() {
                             <h1 className="text-slate-600 text-4xl m-8">Contact information</h1>
                             <ul className="m-8 text-slate-600 text-lg space-y-4">
                                 <li>
-                                    Phone: <a href="tel:+447942386386">07942 386386</a>
+                                    Tel: <a href="tel:+447942386386">07942 386386</a>
                                 </li>
                                 <li>
                                     email: hello@funtimesoftplay.co.uk
                                 </li>
-                                <li className="bg-gray-100 p-4 rounded-lg">
+                                <li className="bg-gray-100 p-3 border rounded-lg bg-white">
                                     <h2 className="font-semibold">Social media</h2>
                                     <div className="flex flex-col items-start mt-2">
                                         <div className='flex flex-row items-center font-semibold'>

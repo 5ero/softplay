@@ -3,6 +3,7 @@ import Footer from '@/components/app/footer';
 import Header from '@/components/app/header';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Breadcrumbs from '@/components/app/breadcrumbs';
 
 interface Category {
     id: number;
@@ -39,7 +40,8 @@ export default function Packages({ items }: Props) {
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header />
-                <div className="container mx-auto px-4 py-12 md:mt-28">
+                <div className="container mx-auto px-4 py-12 md:mt-20">
+                      <Breadcrumbs items={[{ label: 'Packages' }]} />
                     <div className="mb-8">
                         <h1 className="text-5xl font-bold text-gray-600">Our Packages</h1>
                         <p className="mt-2 text-lg text-gray-600">
