@@ -71,7 +71,7 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Pyramid /></div>
-                            <NavItem title="Event Decor" href="/event-decor" activeOverride={activeOverride} />
+                            <NavItem title="Decor" href="/event-decor" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Mail /></div>
