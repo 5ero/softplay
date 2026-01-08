@@ -3,7 +3,7 @@ import NavItem from '@/components/app/nav-item';
 import { Link, usePage } from '@inertiajs/react';
 import { dashboard, login } from '@/routes';
 import { type SharedData } from '@/types';
-import { House, Images, List, Mail, PersonStanding, Pyramid } from 'lucide-react';
+import { House, Images, List, Mail, PartyPopper, PersonStanding, Pyramid } from 'lucide-react';
 
 const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
     const { auth } = usePage<SharedData>().props;
@@ -70,7 +70,7 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                             <NavItem title="Packages" href="/packages" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
-                            <div className='bg-white rounded-full p-2'><Pyramid /></div>
+                            <div className='bg-white rounded-full p-2'><PartyPopper /></div>
                             <NavItem title="Decor" href="/event-decor" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
