@@ -133,7 +133,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('gallery', \App\Http\Controllers\GalleryItemController::class)->parameters(['gallery' => 'gallery:id']);
         Route::resource('party-themes', \App\Http\Controllers\Dashboard\PartyThemeController::class)->parameters(['party-themes' => 'party_theme:id']);
         Route::resource('locations', \App\Http\Controllers\Dashboard\LocationController::class);
-        Route::resource('landing-pages', \App\Http\Controllers\Dashboard\LandingPageController::class)->parameters(['landing-pages' => 'landing_page:id']);
+        Route::resource('landing-pages', \App\Http\Controllers\Dashboard\LandingPageController::class)->except(['show'])->parameters(['landing-pages' => 'landing_page:id']);
         Route::get('prices', [\App\Http\Controllers\Dashboard\PriceController::class, 'index'])->name('prices.index');
         Route::patch('prices/{item:id}', [\App\Http\Controllers\Dashboard\PriceController::class, 'update'])->name('prices.update');
         Route::patch('prices/{item:id}/toggle-status', [\App\Http\Controllers\Dashboard\PriceController::class, 'toggleStatus'])->name('prices.toggle-status');
