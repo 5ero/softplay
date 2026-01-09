@@ -55,7 +55,7 @@ export default function LandingPage({ page, galleryItems, packages }: LandingPag
                     ]} />
                     {/* Page Header */}
                     <div className="mb-8">
-                        <h1 className="text-5xl font-bold text-gray-600 mb-2">{page.title}</h1>
+                        <h1 className="text-6xl page_title font-bold text-gray-600 mb-2">{page.title}</h1>
                         {page.location && (
                             <p className="text-xl text-gray-500">
                                 {page.location.name}
@@ -75,7 +75,7 @@ export default function LandingPage({ page, galleryItems, packages }: LandingPag
                     {/* Gallery Items */}
                     {galleryItems && galleryItems.length > 0 && (
                         <div className="mb-12">
-                            <h2 className="mb-6 text-3xl font-bold text-gray-600">
+                            <h2 className="mb-6 text-4xl page_title font-bold text-gray-600">
                                 Our Work in {page.location?.name || 'the Area'}
                             </h2>
                             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

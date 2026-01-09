@@ -10,7 +10,7 @@ const NavItem = ({ title, href, method = 'get', activeOverride }: { title: strin
             <Link
                 href={href}
                 method={method}
-                className={`font-semibold text-slate-800 rounded py-2 px-3 hover:bg-gray-400 md:hover:text-white ${isActive ? 'md:bg-gray-600 md:text-white' : ''}`}
+                className={`font-semibold text-xl page_title text-slate-600 rounded py-2 px-3 hover:bg-gray-400 md:hover:text-white ${isActive ? 'md:bg-gray-600 md:text-white' : ''}`}
             >
                 {title}
             </Link>

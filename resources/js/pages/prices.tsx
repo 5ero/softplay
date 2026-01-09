@@ -51,7 +51,7 @@ export default function Prices({ items }: Props) {
                 <div className="container mx-auto px-4 py-12 md:mt-20">
                       <Breadcrumbs items={[{ label: 'Prices' }]} />
                     <div className="mb-8">
-                        <h1 className="text-4xl font-bold text-gray-600">Our Prices</h1>
+                        <h1 className="text-6xl font-bold text-gray-600 page_title">Our Prices</h1>
                         <p className="mt-2 text-gray-600">
                             View our complete price list for all items and packages
                         </p>

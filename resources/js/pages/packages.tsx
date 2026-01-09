@@ -43,7 +43,7 @@ export default function Packages({ items }: Props) {
                 <div className="container mx-auto px-4 py-12 md:mt-20">
                       <Breadcrumbs items={[{ label: 'Packages' }]} />
                     <div className="mb-8">
-                        <h1 className="text-5xl font-bold text-gray-600">Our Packages</h1>
+                        <h1 className="text-6xl page_title font-bold text-gray-600">Our Packages</h1>
                         <p className="mt-2 text-lg text-gray-600">
                             Browse our collection of packages.
                         </p>

@@ -43,7 +43,7 @@ export default function AreasCovered({ locations, landingPages }: AreasCoveredPr
                 <div className="container mx-auto px-4 py-12 md:mt-28">
                     <Breadcrumbs items={[{ label: 'Areas Covered' }]} />
                     <div className="mb-8">
-                        <h1 className="text-5xl font-bold text-gray-600 mb-4">Areas Covered</h1>
+                        <h1 className="text-6xl page_title font-bold text-gray-600 mb-4">Areas Covered</h1>
                         <p className="text-xl text-gray-500">
                             We provide softplay hire services across the following locations
                         </p>

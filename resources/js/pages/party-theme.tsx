@@ -40,7 +40,7 @@ export default function PartyTheme({ theme }: { theme: PartyTheme }) {
                     </Link>
 
                     <div className="mb-8">
-                        <h1 className="text-5xl font-bold text-gray-600">{theme.title}</h1>
+                        <h1 className="text-6xl page_title font-bold text-gray-600">{theme.title}</h1>
                     </div>
 
                     {/* Main Image */}
@@ -64,7 +64,7 @@ export default function PartyTheme({ theme }: { theme: PartyTheme }) {
                     {/* Additional Images */}
                     {theme.images && theme.images.length > 1 && (
                         <div>
-                            <h2 className="mb-4 text-2xl font-bold text-gray-600">Gallery</h2>
+                            <h2 className="mb-4 text-4xl page_title font-bold text-gray-600">Gallery</h2>
                             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                                 {theme.images.map((image, index) => (
                                     <div

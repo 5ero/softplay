@@ -25,7 +25,7 @@ export default function Contact() {
                 <div className="container mx-auto px-4 py-12 md:mt-20 50">
                     <Breadcrumbs items={[{ label: 'Contact us' }]} />
                     <div className="mb-8 ">
-                        <h1 className="text-5xl font-bold text-gray-600">Contact us</h1>
+                        <h1 className="text-6xl page_title font-bold text-gray-600">Contact us</h1>
                         <p className="mt-2 text-lg text-gray-600">
                             Make your event extra special with our themed decorations and accessories.
                         </p>
@@ -98,7 +98,7 @@ export default function Contact() {
                             </div>
                         </div>
                         <div>
-                            <h1 className="text-slate-600 text-4xl m-8">Contact information</h1>
+                            <h1 className="text-slate-600 page_title text-4xl m-8">Contact information</h1>
                             <ul className="m-8 text-slate-600 text-lg space-y-4">
                                 <li>
                                     Tel: <a href="tel:+447942386386">07942 386386</a>
