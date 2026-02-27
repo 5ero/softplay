@@ -17,8 +17,8 @@ const Hero = () => {
                                 Funtime Softplay provides full-scale event styling as the specialist décor arm of <a href='https://www.loveballoonsbedfordshire.co.uk'>Love Balloons Bedfordshire</a>, expanding beyond balloons into immersive setups with interactive elements like luxury soft play, balloon houses, ball pits with exciting slides, electric spinning rides, bumper cars with tracks, LED infinity floors, LED carousels, and our showstopper Track Track with dazzling LED lights. 
                                 This partnership creates a "one-stop" solution for high-end unique parties.
                             </p>
-                            <div className=' bg-gray-100 border p-4 rounded-lg '>
-                                <span className="font-semibold text-lg">"For The Ultimate Party Partnership: Immersive Decor and High-End Event decor with that Luxury Experience." Visit our Sister company 👉<a href='https://www.loveballoonsbedfordshire.co.uk'>Love Balloons Bedfordshire</a></span>
+                            <div className=' bg-gray-100 border p-4 rounded-lg mt-4 '>
+                                <span className="font-semibold text-lg">"For The Ultimate Party Partnership: Immersive Decor and High-End Event decor with that Luxury Experience." </span> <br /> Visit our Sister company:  👉 <a href='https://www.loveballoonsbedfordshire.co.uk' className='text-pink-600 underline'>Love Balloons Bedfordshire</a>
                             </div>
                         </div>
 
