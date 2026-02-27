@@ -6,7 +6,7 @@ const Hero = () => {
             <div className="flex flex-col items-center mb-4">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between rounded-lg md:p-8 bg-white">
                     <div className="w-full md:w-1/2">
-                        <h1 className="p-4 text-5xl md:text-4xl font-semibold text-gray-700 mb-2 page_title">
+                        <h1 className="p-4 text-4xl md:text-4xl font-semibold text-gray-700 mb-2 page_title">
                          Luxury Soft Play & Event Styling. <br /><small className='text-gray-600 font-normal'>Creating unforgettable party experiences.</small>
                         </h1>
                         <div className="p-0 md:mb-0 md:hidden">
