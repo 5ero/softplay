@@ -6,13 +6,13 @@ const Hero = () => {
             <div className="flex flex-col items-center mb-4">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between rounded-lg md:p-8 bg-white">
                     <div className="w-full md:w-1/2">
-                        <h1 className="p-4 text-5xl md:text-5xl font-semibold text-gray-700 mb-4 page_title">
-                         Luxury Soft Play & Event Styling. Creating unforgettable party experiences.
+                        <h1 className="p-4 text-5xl md:text-4xl font-semibold text-gray-700 mb-2 page_title">
+                         Luxury Soft Play & Event Styling. <br /><small className='text-gray-600 font-normal'>Creating unforgettable party experiences.</small>
                         </h1>
                         <div className="p-0 md:mb-0 md:hidden">
                             <img src="/storage/img/home/fts-main.jpg" alt="" className='object-cover w-full' />
                         </div>
-                        <div className="prose leading-relaxed md:mt-4 p-4 text-gray-600">
+                        <div className="prose leading-relaxed md:mt-2 p-4 text-gray-600">
                             <p>
                                 Funtime Softplay provides full-scale event styling as the specialist décor arm of <a href='https://www.loveballoonsbedfordshire.co.uk'>Love Balloons Bedfordshire</a>, expanding beyond balloons into immersive setups with interactive elements like luxury soft play, balloon houses, ball pits with exciting slides, electric spinning rides, bumper cars with tracks, LED infinity floors, LED carousels, and our showstopper Train Track with dazzling LED lights. 
                                 This partnership creates a "one-stop" solution for high-end unique parties.
