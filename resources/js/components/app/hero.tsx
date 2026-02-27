@@ -7,22 +7,20 @@ const Hero = () => {
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between rounded-lg md:p-8 bg-white">
                     <div className="w-full md:w-1/2">
                         <h1 className="p-4 text-5xl md:text-5xl font-semibold text-gray-700 mb-4 page_title">
-                          Next level parties start with our unique luxury soft play
+                          Elevate Every Moment: Immersive event styling paired with high-end interactive play installations.
                         </h1>
                         <div className="p-0 md:mb-0 md:hidden">
                             <img src="/storage/img/home/softplay-main-image.jpg" alt="" className='object-cover w-full' />
                         </div>
                         <div className="prose leading-relaxed md:mt-4 p-4 text-gray-600">
-                            <div className='text-2xl mb-2'>
-                                <span className="font-semibold ">Funtime Softplay</span> From the humble beginnings of children’s soft play to a one stop event planning company. 
-                            </div>
-                            <ul className='text-lg mb-4'>
-                                <li>For weddings, For children’s parties inside and out, For birthday parties for all ages</li>
-                                <li>Soft play, Ride on carousels, Bouncy castles, Balloon houses, Bumper cars with track, Table and chairs</li>
-                                <li>For the night time disco! a fabulous 3D led infinity dance floor</li>
-                            </ul> 
+                            <p>
+                                Funtime Softplay provides full-scale event styling as the specialist décor arm of <a href='https://www.loveballoonsbedfordshire.co.uk'>Love Balloons Bedfordshire</a>, expanding beyond balloons into immersive setups with interactive elements like luxury soft play, balloon houses, ball pits with exciting slides, electric spinning rides, bumper cars with tracks, LED infinity floors, LED carousels, and our showstopper Track Track with dazzling LED lights. 
+                            </p>
+                            <p>
+                                This partnership creates a "one-stop" solution for high-end unique parties.
+                            </p>
                             <div className=' bg-gray-100 border p-4 rounded-lg '>
-                                <span className="font-semibold text-lg"> We offer Full party decor along side our parent company Love Balloons Bedfordshire.</span>
+                                <span className="font-semibold text-lg">"For The Ultimate Party Partnership: Immersive Decor and High-End Event decor with that Luxury Experience." Visit our Sister company 👉<a href='https://www.loveballoonsbedfordshire.co.uk'>Love Balloons Bedfordshire</a></span>
                             </div>
                         </div>
 
