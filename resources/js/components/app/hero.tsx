@@ -14,7 +14,7 @@ const Hero = () => {
                         </div>
                         <div className="prose leading-relaxed md:mt-2 p-4 text-gray-600">
                             <p>
-                                Funtime Softplay provides full-scale event styling as the specialist décor arm of <a href='https://www.loveballoonsbedfordshire.co.uk'>Love Balloons Bedfordshire</a>, expanding beyond balloons into immersive setups with interactive elements like luxury soft play, balloon houses, ball pits with exciting slides, electric spinning rides, bumper cars with tracks, LED infinity floors, LED carousels, and our showstopper Train Track with dazzling LED lights. 
+                                Funtime Softplay provides full-scale event styling as the specialist décor arm of <a href='https://loveballoonsbedfordshire.co.uk'>Love Balloons Bedfordshire</a>, expanding beyond balloons into immersive setups with interactive elements like luxury soft play, balloon houses, ball pits with exciting slides, electric spinning rides, bumper cars with tracks, LED infinity floors, LED carousels, and our showstopper Train Track with dazzling LED lights. 
                                 This partnership creates a "one-stop" solution for high-end unique parties.
                             </p>
                             <div className=' bg-gray-100 border p-4 rounded-lg mt-4 '>
