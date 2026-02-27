@@ -3,7 +3,7 @@ import '../css/app.css';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { StrictMode } from 'react';
-import { hydrateRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { initializeTheme } from './hooks/use-appearance';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Funtime Softplay';
@@ -16,12 +16,19 @@ createInertiaApp({
             import.meta.glob('./pages/**/*.tsx'),
         ),
     setup({ el, App, props }) {
-        hydrateRoot(
-            el,
+        const app = (
             <StrictMode>
                 <App {...props} />
-            </StrictMode>,
+            </StrictMode>
         );
+
+        if (el.hasChildNodes()) {
+            hydrateRoot(el, app);
+
+            return;
+        }
+
+        createRoot(el).render(app);
     },
     progress: {
         color: '#4B5563',

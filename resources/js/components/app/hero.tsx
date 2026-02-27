@@ -18,7 +18,7 @@ const Hero = () => {
                                 This partnership creates a "one-stop" solution for high-end unique parties.
                             </p>
                             <div className=' bg-gray-100 border p-4 rounded-lg mt-4 '>
-                                <span className="font-semibold text-lg">"For The Ultimate Party Partnership: Immersive High-End Event decor with that Luxury Experience." </span> <br /> Visit our Sister company:  👉 <a href='https://www.loveballoonsbedfordshire.co.uk' className='text-pink-600 underline'>Love Balloons Bedfordshire</a>
+                                <span className="font-semibold text-lg">"For The Ultimate Party Partnership: Immersive High-End Event decor with that Luxury Experience." </span> <br /> Visit our Sister company:  👉 <a href='https://loveballoonsbedfordshire.co.uk' className='text-pink-600 underline'>Love Balloons Bedfordshire</a>
                             </div>
                         </div>
 
