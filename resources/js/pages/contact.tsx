@@ -81,6 +81,34 @@ export default function Contact() {
                                                 {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                                             </div>
                                             <div className="mb-4">
+                                                <label htmlFor="event_date" className="block text-slate-600 mb-2">Event date</label>
+                                                <input
+                                                    type="date"
+                                                    id="event_date"
+                                                    name="event_date"
+                                                    className={`w-full bg-white border rounded px-4 py-2 ${errors.event_date ? 'border-red-500' : 'border-slate-300'}`}
+                                                    onClick={(event) => {
+                                                        try {
+                                                            (event.currentTarget as HTMLInputElement & { showPicker?: () => void }).showPicker?.();
+                                                        } catch {
+                                                        }
+                                                    }}
+                                                    required
+                                                />
+                                                {errors.event_date && <p className="text-red-500 text-sm mt-1">{errors.event_date}</p>}
+                                            </div>
+                                            <div className="mb-4">
+                                                <label htmlFor="location" className="block text-slate-600 mb-2">Location</label>
+                                                <input
+                                                    type="text"
+                                                    id="location"
+                                                    name="location"
+                                                    className={`w-full bg-white border rounded px-4 py-2 ${errors.location ? 'border-red-500' : 'border-slate-300'}`}
+                                                    required
+                                                />
+                                                {errors.location && <p className="text-red-500 text-sm mt-1">{errors.location}</p>}
+                                            </div>
+                                            <div className="mb-4">
                                                 <label htmlFor="message" className="block text-slate-600 mb-2">Message</label>
                                                 <textarea 
                                                     id="message" 
@@ -106,7 +134,7 @@ export default function Contact() {
                                 <li>
                                     email: hello@funtimesoftplay.co.uk
                                 </li>
-                                <li className="bg-gray-100 p-3 border rounded-lg bg-white">
+                                <li className="p-3 border rounded-lg bg-white">
                                     <h2 className="font-semibold">Social media</h2>
                                     <div className="flex flex-col items-start mt-2">
                                         <div className='flex flex-row items-center font-semibold'>

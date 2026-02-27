@@ -14,10 +14,12 @@ class ContactController extends Controller
 
         Mail::to(config('mail.to_address', config('mail.from.address')))
             ->send(new ContactFormMail(
-                name: $validated['name'],
-                email: $validated['email'],
-                phone: $validated['phone'],
-                messageContent: $validated['message'],
+                $validated['name'],
+                $validated['email'],
+                $validated['phone'],
+                $validated['event_date'],
+                $validated['location'],
+                $validated['message'],
             ));
 
         return back()->with('success', 'Thank you for your message! We will get back to you soon.');

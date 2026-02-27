@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -30,6 +29,8 @@ class ContactFormMail extends Mailable
         public string $name,
         public string $email,
         public string $phone,
+        public string $eventDate,
+        public string $location,
         public string $messageContent,
     ) {}
 
@@ -55,6 +56,8 @@ class ContactFormMail extends Mailable
                 'name' => $this->name,
                 'email' => $this->email,
                 'phone' => $this->phone,
+                'eventDate' => $this->eventDate,
+                'location' => $this->location,
                 'messageContent' => $this->messageContent,
             ],
         );

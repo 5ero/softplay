@@ -25,6 +25,8 @@ class ContactRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'phone' => ['required', 'string', 'max:20'],
+            'event_date' => ['required', 'date'],
+            'location' => ['required', 'string', 'max:255'],
             'message' => ['required', 'string', 'max:5000'],
         ];
     }
