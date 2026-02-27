@@ -37,7 +37,7 @@ const Hero = () => {
                             backgroundPositionY: '0px',
                             backgroundSize: 'cover',
                             backgroundRepeat: 'no-repeat',
-                            backgroundImage: "url('/storage/img/home/softplay-main-image.jpg')"
+                            backgroundImage: "url('/storage/img/home/fts-main.jpg')"
                         }}
                     />
                 </div>
