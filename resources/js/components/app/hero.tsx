@@ -10,7 +10,7 @@ const Hero = () => {
                           Elevate Every Moment: Immersive event styling paired with high-end interactive play installations.
                         </h1>
                         <div className="p-0 md:mb-0 md:hidden">
-                            <img src="/storage/img/home/softplay-main-image.jpg" alt="" className='object-cover w-full' />
+                            <img src="/storage/img/home/fts-main.jpg" alt="" className='object-cover w-full' />
                         </div>
                         <div className="prose leading-relaxed md:mt-4 p-4 text-gray-600">
                             <p>
