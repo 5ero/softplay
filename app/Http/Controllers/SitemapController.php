@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GalleryItem;
 use App\Models\LandingPage;
 use App\Models\PartyTheme;
+use App\Models\SoftPlayItem;
 use Illuminate\Http\Response;
 
 class SitemapController extends Controller
@@ -23,6 +24,10 @@ class SitemapController extends Controller
             ->orderBy('updated_at', 'desc')
             ->get();
 
+        $softPlayItems = SoftPlayItem::where('is_active', true)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
         $sitemap = '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL;
         $sitemap .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL;
 
@@ -30,6 +35,7 @@ class SitemapController extends Controller
         $staticPages = [
             ['url' => '/', 'priority' => '1.0', 'changefreq' => 'daily'],
             ['url' => '/gallery', 'priority' => '0.9', 'changefreq' => 'daily'],
+            ['url' => '/soft-play', 'priority' => '0.9', 'changefreq' => 'daily'],
             ['url' => '/event-decor', 'priority' => '0.9', 'changefreq' => 'weekly'],
             ['url' => '/prices', 'priority' => '0.8', 'changefreq' => 'weekly'],
             ['url' => '/contact', 'priority' => '0.7', 'changefreq' => 'monthly'],
@@ -68,6 +74,16 @@ class SitemapController extends Controller
         foreach ($galleryItems as $item) {
             $sitemap .= $this->generateUrlEntry(
                 url('/gallery/'.$item->slug),
+                $item->updated_at,
+                'weekly',
+                '0.6'
+            );
+        }
+
+        // Soft Play Items
+        foreach ($softPlayItems as $item) {
+            $sitemap .= $this->generateUrlEntry(
+                url('/soft-play/'.$item->slug),
                 $item->updated_at,
                 'weekly',
                 '0.6'

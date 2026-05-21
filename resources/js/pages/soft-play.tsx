@@ -22,12 +22,21 @@ interface Props {
 export default function SoftPlay({ items }: Props) {
     return (
         <>
-            <Head title="Soft Play">
+            <Head title="Soft Play | Funtime Softplay">
                 <link rel="preconnect" href="https://fonts.bunny.net" />
                 <link
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
                     rel="stylesheet"
                 />
+                <meta name="description" content="Browse our full collection of soft play equipment for hire. Perfect for children's parties and events across Bedfordshire and surrounding areas." />
+                <link rel="canonical" href="https://funtimesoftplay.co.uk/soft-play" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://funtimesoftplay.co.uk/soft-play" />
+                <meta property="og:title" content="Soft Play | Funtime Softplay" />
+                <meta property="og:description" content="Browse our full collection of soft play equipment for hire. Perfect for children's parties and events across Bedfordshire and surrounding areas." />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Soft Play | Funtime Softplay" />
+                <meta name="twitter:description" content="Browse our full collection of soft play equipment for hire. Perfect for children's parties and events across Bedfordshire and surrounding areas." />
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header />

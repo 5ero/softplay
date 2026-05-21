@@ -44,6 +44,7 @@ export default function LandingPage({ page, galleryItems, packages }: LandingPag
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
                     rel="stylesheet"
                 />
+                <link rel="canonical" href={`https://funtimesoftplay.co.uk/${page.slug}`} />
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header />

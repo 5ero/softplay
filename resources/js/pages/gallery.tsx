@@ -37,6 +37,7 @@ export default function Gallery({ items }: Props) {
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
                     rel="stylesheet"
                 />
+                <link rel="canonical" href="https://funtimesoftplay.co.uk/gallery" />
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header />

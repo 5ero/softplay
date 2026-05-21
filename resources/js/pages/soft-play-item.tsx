@@ -38,20 +38,32 @@ export default function SoftPlayItemView({ item }: Props) {
             : [];
 
     const [selectedImage, setSelectedImage] = useState(0);
+    const plainDescription = item.description.replace(/<[^>]+>/g, '').slice(0, 160);
+    const ogImage = item.main_image
+        ? `https://funtimesoftplay.co.uk/storage/${item.main_image}`
+        : item.images?.[0]
+          ? `https://funtimesoftplay.co.uk/storage/${item.images[0]}`
+          : undefined;
 
     return (
         <>
-            <Head title={item.title}>
+            <Head title={`${item.title} | Funtime Softplay`}>
                 <link rel="preconnect" href="https://fonts.bunny.net" />
                 <link
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
                     rel="stylesheet"
                 />
-                <meta
-                    name="description"
-                    content={item.description.replace(/<[^>]+>/g, '').slice(0, 160)}
-                />
+                <meta name="description" content={plainDescription} />
                 <link rel="canonical" href={`https://funtimesoftplay.co.uk/soft-play/${item.slug}`} />
+                <meta property="og:type" content="product" />
+                <meta property="og:url" content={`https://funtimesoftplay.co.uk/soft-play/${item.slug}`} />
+                <meta property="og:title" content={`${item.title} | Funtime Softplay`} />
+                <meta property="og:description" content={plainDescription} />
+                {ogImage && <meta property="og:image" content={ogImage} />}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${item.title} | Funtime Softplay`} />
+                <meta name="twitter:description" content={plainDescription} />
+                {ogImage && <meta name="twitter:image" content={ogImage} />}
             </Head>
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header activeOverride="/soft-play" />

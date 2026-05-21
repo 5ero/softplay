@@ -18,6 +18,7 @@ export default function Contact() {
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
                     rel="stylesheet"
                 />
+                <link rel="canonical" href="https://funtimesoftplay.co.uk/contact" />
             </Head>
             <div className="flex flex-col min-h-screen bg-blue-50">
                 <Header />
