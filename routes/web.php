@@ -33,7 +33,7 @@ Route::get('/areas-covered', function () {
     $locations = \App\Models\Location::where('is_active', true)
         ->orderBy('sort_order')
         ->get();
-    
+
     $landingPages = \App\Models\LandingPage::where('is_active', true)
         ->select('id', 'title', 'slug', 'location_id')
         ->orderBy('sort_order')
@@ -47,6 +47,9 @@ Route::get('/areas-covered', function () {
 
 Route::get('/gallery', [\App\Http\Controllers\GalleryItemController::class, 'publicIndex'])->name('gallery');
 Route::get('/gallery/{galleryItem:slug}', [\App\Http\Controllers\GalleryItemController::class, 'publicShow'])->name('gallery.show');
+
+Route::get('/soft-play', [\App\Http\Controllers\SoftPlayItemController::class, 'publicIndex'])->name('soft-play');
+Route::get('/soft-play/{softPlayItem:slug}', [\App\Http\Controllers\SoftPlayItemController::class, 'publicShow'])->name('soft-play.show');
 
 Route::get('/prices', function () {
     $items = GalleryItem::with('category')
@@ -92,7 +95,7 @@ Route::get('/event-decor', function () {
 })->name('event-decor');
 
 Route::get('/event-decor/{partyTheme:slug}', function (\App\Models\PartyTheme $partyTheme) {
-    if (!$partyTheme->is_active) {
+    if (! $partyTheme->is_active) {
         abort(404);
     }
 
@@ -131,6 +134,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::resource('categories', \App\Http\Controllers\CategoryController::class);
         Route::resource('gallery', \App\Http\Controllers\GalleryItemController::class)->parameters(['gallery' => 'gallery:id']);
+        Route::resource('soft-play', \App\Http\Controllers\SoftPlayItemController::class)->parameters(['soft-play' => 'soft_play_item:id']);
         Route::resource('party-themes', \App\Http\Controllers\Dashboard\PartyThemeController::class)->parameters(['party-themes' => 'party_theme:id']);
         Route::resource('locations', \App\Http\Controllers\Dashboard\LocationController::class);
         Route::resource('landing-pages', \App\Http\Controllers\Dashboard\LandingPageController::class)->except(['show'])->parameters(['landing-pages' => 'landing_page:id']);
@@ -144,7 +148,7 @@ require __DIR__.'/settings.php';
 
 // Landing page catch-all route - MUST be last!
 Route::get('/{landingPage:slug}', function (\App\Models\LandingPage $landingPage) {
-    if (!$landingPage->is_active) {
+    if (! $landingPage->is_active) {
         abort(404);
     }
 

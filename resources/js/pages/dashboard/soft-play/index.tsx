@@ -7,17 +7,9 @@ import {
     CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link, router } from '@inertiajs/react';
-import React from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -25,18 +17,12 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/dashboard',
     },
     {
-        title: 'Rides',
-        href: '/dashboard/gallery',
+        title: 'Soft Play',
+        href: '/dashboard/soft-play',
     },
 ];
 
-interface Category {
-    id: number;
-    name: string;
-    slug: string;
-}
-
-interface GalleryItem {
+interface SoftPlayItem {
     id: number;
     title: string;
     description: string;
@@ -44,80 +30,41 @@ interface GalleryItem {
     images: string[];
     is_active: boolean;
     sort_order: number;
-    category: Category;
     created_at: string;
     updated_at: string;
 }
 
-interface GalleryIndexProps {
-    items: GalleryItem[];
-    categories: Category[];
-    filters: {
-        category?: string;
-    };
+interface SoftPlayIndexProps {
+    items: SoftPlayItem[];
+    filters: Record<string, string>;
 }
 
-export default function GalleryIndex({ items, categories, filters }: GalleryIndexProps) {
-    const [selectedCategory, setSelectedCategory] = React.useState<string>(
-        filters.category || 'all'
-    );
-
-    const handleCategoryChange = (value: string) => {
-        setSelectedCategory(value);
-        if (value === 'all') {
-            router.get('/dashboard/gallery');
-        } else {
-            router.get('/dashboard/gallery', { category: value });
-        }
-    };
-
+export default function SoftPlayIndex({ items }: SoftPlayIndexProps) {
     const handleDelete = (id: number) => {
         if (
             confirm(
-                'Are you sure you want to delete this gallery item? All images will be removed.'
+                'Are you sure you want to delete this soft play item? All images will be removed.'
             )
         ) {
-            router.delete(`/dashboard/gallery/${id}`);
+            router.delete(`/dashboard/soft-play/${id}`);
         }
     };
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Gallery Items" />
+            <Head title="Soft Play Items" />
 
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h1 className="text-2xl font-semibold">Rides</h1>
+                        <h1 className="text-2xl font-semibold">Soft Play</h1>
                         <p className="text-sm text-muted-foreground">
-                            Manage your rides
+                            Manage your soft play items
                         </p>
                     </div>
-                    <Link href="/dashboard/gallery/create">
+                    <Link href="/dashboard/soft-play/create">
                         <Button>Add Item</Button>
                     </Link>
-                </div>
-
-                <div className="flex items-center gap-4">
-                    <Select
-                        value={selectedCategory}
-                        onValueChange={handleCategoryChange}
-                    >
-                        <SelectTrigger className="w-[200px]">
-                            <SelectValue placeholder="All Categories" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="all">All Categories</SelectItem>
-                            {categories.map((category) => (
-                                <SelectItem
-                                    key={category.id}
-                                    value={category.id.toString()}
-                                >
-                                    {category.name}
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -129,18 +76,16 @@ export default function GalleryIndex({ items, categories, filters }: GalleryInde
                                     {item.is_active ? (
                                         <Badge variant="default">Active</Badge>
                                     ) : (
-                                        <Badge variant="secondary">
-                                            Inactive
-                                        </Badge>
+                                        <Badge variant="secondary">Inactive</Badge>
                                     )}
                                 </div>
                                 <CardDescription>
-                                    {item.category.name}
+                                    Sort order: {item.sort_order}
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
                                 <div className="space-y-3">
-                                    <div 
+                                    <div
                                         className="line-clamp-2 text-sm text-muted-foreground"
                                         dangerouslySetInnerHTML={{ __html: item.description }}
                                     />
@@ -153,9 +98,7 @@ export default function GalleryIndex({ items, categories, filters }: GalleryInde
                                         </p>
                                     )}
                                     <div className="flex gap-2">
-                                        <Link
-                                            href={`/dashboard/gallery/${item.id}/edit`}
-                                        >
+                                        <Link href={`/dashboard/soft-play/${item.id}/edit`}>
                                             <Button variant="outline" size="sm">
                                                 Edit
                                             </Button>
@@ -163,9 +106,7 @@ export default function GalleryIndex({ items, categories, filters }: GalleryInde
                                         <Button
                                             variant="destructive"
                                             size="sm"
-                                            onClick={() =>
-                                                handleDelete(item.id)
-                                            }
+                                            onClick={() => handleDelete(item.id)}
                                         >
                                             Delete
                                         </Button>
@@ -180,12 +121,9 @@ export default function GalleryIndex({ items, categories, filters }: GalleryInde
                     <Card>
                         <CardContent className="flex flex-col items-center justify-center py-12">
                             <p className="text-muted-foreground">
-                                No rides yet
+                                No soft play items yet
                             </p>
-                            <Link
-                                href="/dashboard/gallery/create"
-                                className="mt-4"
-                            >
+                            <Link href="/dashboard/soft-play/create" className="mt-4">
                                 <Button>Create your first item</Button>
                             </Link>
                         </CardContent>

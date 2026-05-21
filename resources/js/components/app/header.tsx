@@ -18,6 +18,7 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                 <div className="hidden md:flex flex-row items-center justify-end w-full">
                     <NavItem title="Home" href="/" activeOverride={activeOverride} />
                     <NavItem title="Rides" href="/gallery" activeOverride={activeOverride} />
+                    <NavItem title="Soft Play" href="/soft-play" activeOverride={activeOverride} />
                     <NavItem title="Prices" href="/prices" activeOverride={activeOverride} />
                     <NavItem title="Packages" href="/packages" activeOverride={activeOverride} />
                     <NavItem title="Event decor" href="/event-decor" activeOverride={activeOverride} />
@@ -49,7 +50,14 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                             </svg>
                         </button>
                     </div>
-                    <div className={`fixed md:hidden w-1/2 top-0 left-0 min-h-screen flex flex-col bg-gray-50 border-r border-gray-300 shadow-xl space-y-4 pt-4 z-50 transition-transform duration-300 ease-in-out ${showMobileNav ? 'translate-x-0' : '-translate-x-full'}`}>
+                    {/* Backdrop */}
+                    {showMobileNav && (
+                        <div
+                            className="fixed inset-0 bg-black/40 z-40 md:hidden"
+                            onClick={() => setShowMobileNav(false)}
+                        />
+                    )}
+                    <div className={`fixed md:hidden w-1/2 top-0 left-0 min-h-screen flex flex-col bg-gray-50 border-r border-gray-300 shadow-xl space-y-4 pt-4 z-50 transition-transform duration-300 ease-in-out ${showMobileNav ? 'translate-x-0' : '-translate-x-full pointer-events-none'}`}>
                         <div className="p-3">
                             <img src="/storage/img/logo/funtime-softplay-logo-trans.png" alt="" className="w-32 md:w-44 object-center ml-4" />
                         </div>
@@ -60,6 +68,10 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Images /></div>
                             <NavItem title="Rides" href="/gallery" activeOverride={activeOverride} />
+                        </div>
+                        <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
+                            <div className='bg-white rounded-full p-2'><Images /></div>
+                            <NavItem title="Soft Play" href="/soft-play" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><List /></div>

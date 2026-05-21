@@ -10,14 +10,6 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
 import { RichTextEditor } from '@/components/ui/rich-text-editor';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
@@ -30,30 +22,17 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/dashboard',
     },
     {
-        title: 'Rides',
-        href: '/dashboard/gallery',
+        title: 'Soft Play',
+        href: '/dashboard/soft-play',
     },
     {
         title: 'Create',
-        href: '/dashboard/gallery/create',
+        href: '/dashboard/soft-play/create',
     },
 ];
 
-interface Category {
-    id: number;
-    name: string;
-    slug: string;
-}
-
-export default function CreateGalleryItem({
-    categories,
-}: {
-    categories: Category[];
-}) {
-    const [selectedCategory, setSelectedCategory] = React.useState<string>('');
-    const [icons, setIcons] = React.useState<{ src: string; label: string }[]>(
-        []
-    );
+export default function CreateSoftPlayItem() {
+    const [icons, setIcons] = React.useState<{ src: string; label: string }[]>([]);
     const [description, setDescription] = React.useState<string>('');
     const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
     const [selectedVideos, setSelectedVideos] = React.useState<File[]>([]);
@@ -75,7 +54,6 @@ export default function CreateGalleryItem({
 
     const removeFile = (index: number) => {
         setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
-        // Reset main image index if it was the removed image or higher
         if (mainImageIndex >= index && mainImageIndex > 0) {
             setMainImageIndex(mainImageIndex - 1);
         } else if (mainImageIndex === index) {
@@ -95,28 +73,24 @@ export default function CreateGalleryItem({
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Create Gallery Item" />
+            <Head title="Create Soft Play Item" />
 
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div>
-                    <h1 className="text-2xl font-semibold">
-                        Create Ride
-                    </h1>
-                    <p className="text-sm text-muted-foreground">
-                        Add a new ride
-                    </p>
+                    <h1 className="text-2xl font-semibold">Create Soft Play Item</h1>
+                    <p className="text-sm text-muted-foreground">Add a new soft play item</p>
                 </div>
 
                 <Card className="max-w-2xl">
                     <CardHeader>
                         <CardTitle>Item Details</CardTitle>
                         <CardDescription>
-                            Enter the information for the new ride
+                            Enter the information for the new soft play item
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
                         <Form
-                            action="/dashboard/gallery"
+                            action="/dashboard/soft-play"
                             method="post"
                             encType="multipart/form-data"
                             className="space-y-6"
@@ -124,73 +98,34 @@ export default function CreateGalleryItem({
                             {({ processing, errors }) => (
                                 <>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="category_id">
-                                            Category
-                                        </Label>
-                                        <Select
-                                            name="category_id"
-                                            value={selectedCategory}
-                                            onValueChange={setSelectedCategory}
-                                            required
-                                        >
-                                            <SelectTrigger>
-                                                <SelectValue placeholder="Select a category" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                {categories.map((category) => (
-                                                    <SelectItem
-                                                        key={category.id}
-                                                        value={String(
-                                                            category.id
-                                                        )}
-                                                    >
-                                                        {category.name}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                        <InputError
-                                            message={errors.category_id}
-                                        />
-                                    </div>
-
-                                    <div className="grid gap-2">
                                         <Label htmlFor="title">Title</Label>
                                         <Input
                                             id="title"
                                             name="title"
                                             required
-                                            placeholder="Bouncy Castle"
+                                            placeholder="Soft Play Set"
                                         />
                                         <InputError message={errors.title} />
                                     </div>
 
                                     <div className="grid gap-2">
-                                        <Label htmlFor="description">
-                                            Description
-                                        </Label>
+                                        <Label htmlFor="description">Description</Label>
                                         <RichTextEditor
                                             content={description}
                                             onChange={setDescription}
                                             name="description"
                                         />
-                                        <InputError
-                                            message={errors.description}
-                                        />
+                                        <InputError message={errors.description} />
                                     </div>
 
                                     <div className="grid gap-2">
-                                        <Label htmlFor="coverage">
-                                            Coverage Area
-                                        </Label>
+                                        <Label htmlFor="coverage">Coverage Area</Label>
                                         <Input
                                             id="coverage"
                                             name="coverage"
                                             placeholder="4.8m x 3.6m"
                                         />
-                                        <p className="text-xs text-muted-foreground">
-                                            e.g., 4.8m x 3.6m
-                                        </p>
+                                        <p className="text-xs text-muted-foreground">e.g., 4.8m x 3.6m</p>
                                         <InputError message={errors.coverage} />
                                     </div>
 
@@ -220,12 +155,10 @@ export default function CreateGalleryItem({
                                             onChange={handleFileChange}
                                         />
                                         <p className="text-xs text-muted-foreground">
-                                            Upload multiple images (max 5MB
-                                            each)
+                                            Upload multiple images (max 5MB each)
                                         </p>
                                         <InputError message={errors.images} />
 
-                                        {/* Preview Selected Files */}
                                         {selectedFiles.length > 0 && (
                                             <div className="mt-4 grid grid-cols-3 gap-2">
                                                 {selectedFiles.map((file, index) => (
@@ -291,7 +224,6 @@ export default function CreateGalleryItem({
                                         </p>
                                         <InputError message={errors.videos} />
 
-                                        {/* Preview Selected Videos */}
                                         {selectedVideos.length > 0 && (
                                             <div className="mt-4 space-y-2">
                                                 {selectedVideos.map((file, index) => (
@@ -334,10 +266,7 @@ export default function CreateGalleryItem({
                                         )}
                                     </div>
 
-                                    <IconManager
-                                        initialIcons={icons}
-                                        onChange={setIcons}
-                                    />
+                                    <IconManager initialIcons={icons} onChange={setIcons} />
                                     <input
                                         type="hidden"
                                         name="icons"
@@ -345,9 +274,7 @@ export default function CreateGalleryItem({
                                     />
 
                                     <div className="grid gap-2">
-                                        <Label htmlFor="sort_order">
-                                            Sort Order
-                                        </Label>
+                                        <Label htmlFor="sort_order">Sort Order</Label>
                                         <Input
                                             id="sort_order"
                                             name="sort_order"
@@ -361,29 +288,12 @@ export default function CreateGalleryItem({
                                         <InputError message={errors.sort_order} />
                                     </div>
 
-                                    <div className="flex items-center space-x-3">
-                                        <Checkbox
-                                            id="is_package"
-                                            name="is_package"
-                                            value="1"
-                                        />
-                                        <Label htmlFor="is_package" className="font-normal cursor-pointer">
-                                            This is a package
-                                        </Label>
-                                    </div>
-
                                     <div className="flex items-center gap-4">
-                                        <Button
-                                            type="submit"
-                                            disabled={processing}
-                                        >
+                                        <Button type="submit" disabled={processing}>
                                             Create Item
                                         </Button>
-                                        <Link href="/dashboard/gallery">
-                                            <Button
-                                                type="button"
-                                                variant="outline"
-                                            >
+                                        <Link href="/dashboard/soft-play">
+                                            <Button type="button" variant="outline">
                                                 Cancel
                                             </Button>
                                         </Link>

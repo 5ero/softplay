@@ -30,7 +30,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/dashboard',
     },
     {
-        title: 'Gallery',
+        title: 'Rides',
         href: '/dashboard/gallery',
     },
     {
@@ -140,7 +140,7 @@ export default function EditGalleryItem({
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div>
                     <h1 className="text-2xl font-semibold">
-                        Edit Gallery Item
+                        Edit Ride
                     </h1>
                     <p className="text-sm text-muted-foreground">
                         Update the item information
