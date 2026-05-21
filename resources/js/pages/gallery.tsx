@@ -41,9 +41,9 @@ export default function Gallery({ items }: Props) {
             <div className="flex min-h-screen flex-col bg-blue-50">
                 <Header />
                 <div className="container mx-auto px-4 py-12 md:mt-20">
-                    <Breadcrumbs items={[{ label: 'Gallery' }]} />
+                    <Breadcrumbs items={[{ label: 'Our Rides' }]} />
                     <div className="mb-8">
-                        <h1 className="text-6xl font-bold text-gray-600 page_title">Our Gallery</h1>
+                        <h1 className="text-6xl font-bold text-gray-600 page_title">Our Rides</h1>
                         <p className="mt-2 text-lg text-gray-600">
                             Browse our collection of soft play equipment and party rentals
                         </p>

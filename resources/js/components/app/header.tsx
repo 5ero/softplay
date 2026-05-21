@@ -17,7 +17,7 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                 </div>
                 <div className="hidden md:flex flex-row items-center justify-end w-full">
                     <NavItem title="Home" href="/" activeOverride={activeOverride} />
-                    <NavItem title="Gallery" href="/gallery" activeOverride={activeOverride} />
+                    <NavItem title="Rides" href="/gallery" activeOverride={activeOverride} />
                     <NavItem title="Prices" href="/prices" activeOverride={activeOverride} />
                     <NavItem title="Packages" href="/packages" activeOverride={activeOverride} />
                     <NavItem title="Event decor" href="/event-decor" activeOverride={activeOverride} />
@@ -59,7 +59,7 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Images /></div>
-                            <NavItem title="Gallery" href="/gallery" activeOverride={activeOverride} />
+                            <NavItem title="Rides" href="/gallery" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><List /></div>
