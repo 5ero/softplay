@@ -19,9 +19,9 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                     <NavItem title="Home" href="/" activeOverride={activeOverride} />
                     <NavItem title="Rides" href="/gallery" activeOverride={activeOverride} />
                     <NavItem title="Soft Play" href="/soft-play" activeOverride={activeOverride} />
-                    <NavItem title="Prices" href="/prices" activeOverride={activeOverride} />
                     <NavItem title="Packages" href="/packages" activeOverride={activeOverride} />
                     <NavItem title="Event decor" href="/event-decor" activeOverride={activeOverride} />
+                    <NavItem title="Prices" href="/prices" activeOverride={activeOverride} />
                     <NavItem title="Contact us" href="/contact" activeOverride={activeOverride} />
                     {auth.user ? (
                         <NavItem
@@ -74,16 +74,16 @@ const Header = ({ activeOverride }: { activeOverride?: string } = {}) => {
                             <NavItem title="Soft Play" href="/soft-play" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
-                            <div className='bg-white rounded-full p-2'><List /></div>
-                            <NavItem title="Prices" href="/prices" activeOverride={activeOverride} />
-                        </div>
-                        <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Pyramid /></div>
                             <NavItem title="Packages" href="/packages" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><PartyPopper /></div>
                             <NavItem title="Decor" href="/event-decor" activeOverride={activeOverride} />
+                        </div>
+                        <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
+                            <div className='bg-white rounded-full p-2'><List /></div>
+                            <NavItem title="Prices" href="/prices" activeOverride={activeOverride} />
                         </div>
                         <div className='flex flex-row items-center justify-start bg-gray-200 border border-gray-300 rounded mx-4 p-2 text-gray-800 shadow'>
                             <div className='bg-white rounded-full p-2'><Mail /></div>
