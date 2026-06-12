@@ -13,7 +13,7 @@ import {
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Tag, Images, ExternalLink, FileText, PoundSterling, PartyPopper, MapPin, FileType } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, Tag, Images, ExternalLink, FileText, PoundSterling, PartyPopper, MapPin, FileType, Layers } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -36,6 +36,11 @@ const mainNavItems: NavItem[] = [
         title: 'Gallery',
         href: '/dashboard/gallery',
         icon: Images,
+    },
+    {
+        title: 'Soft Play',
+        href: '/dashboard/soft-play',
+        icon: Layers,
     },
     {
         title: 'Event Decor',
